@@ -193,8 +193,6 @@
        </div>
    </div>
    <!-- End Banner Section -->
-
-   <!-- Start Product Default Slider Section -->
    <div class="product-default-slider-section section-top-gap-100 section-fluid section-inner-bg">
        <!-- Start Section Content Text Area -->
        <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
@@ -203,7 +201,7 @@
                    <div class="col-12">
                        <div class="section-content-gap">
                            <div class="secton-content">
-                               <h3 class="section-title">Serviços</h3>
+                               <h3 class="section-title">BEST SELLERS</h3>
                                <p>Add our best sellers to your weekly lineup.</p>
                            </div>
                        </div>
@@ -223,56 +221,55 @@
                                <div class="swiper-wrapper">
                                    <!-- End Product Default Single Item -->
                                    <!-- Start Product Default Single Item -->
-        
-                                   <!-- End Product Default Single Item -->
-                                   <!-- Start Product Default Single Item -->
                                    <?php
-    $sql = "SELECT nome, link_img, preco FROM servicos";
-    $result = $con->query($sql);
+                                    $sql = "SELECT nome, link_img, preco FROM servicos";
+                                    $result = $con->query($sql);
 
-    // Verifica se a consulta retornou algum resultado
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $nome = $row["nome"];
-            $imagem = $row["link_img"];
-            $preco = $row["preco"];
-?>
-            <div class="product-default-single-item product-color--golden swiper-slide">
-                <div class="image-box">
-                    <a href="product-details-default.html" class="image-link">
-                        <img src="<?php echo $imagem; ?>" alt="">
-                        <!-- Adicione o segundo <img> caso necessário -->
-                    </a>
-                    <div class="action-link">
-                        <div class="action-link-left">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
-                        </div>
-                        <div class="action-link-right">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
-                            <a href="wishlist.html"><i class="icon-heart"></i></a>
-                            <a href="compare.html"><i class="icon-shuffle"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="content-left">
-                        <h6 class="title"><a href="product-details-default.html"><?php echo $nome; ?></a></h6>
-                        <!-- Restante do código HTML com as informações atualizadas -->
-                    </div>
-                    <div class="content-right">
-                        <span class="price"><?php echo $preco; ?></span>
-                    </div>
-                </div>
-            </div>
-<?php
-        }
-    } else {
-        echo "Nenhum resultado encontrado na tabela 'servicos'.";
-    }
-?>
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $nome = $row["nome"];
+                                            $imagem = $row["link_img"];
+                                            $preco = $row["preco"];
 
-                                       </div>
-                                   </div> <!-- End Product Default Single Item -->
+                                            // Exibindo as informações do produto
+                                            echo '<div class="product-default-single-item product-color--golden swiper-slide">';
+                                            echo '<div class="image-box">';
+                                            echo '<a href="product-details-default.html" class="image-link">';
+                                            echo '<img src="' . $imagem . '" alt="" style="width="1280" height="1920">';
+                                            echo '</a>';
+                                            echo '<div class="action-link">';
+                                            echo '<div class="action-link-left">';
+                                            echo '<a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>';
+                                            echo '</div>';
+                                            echo '<div class="action-link-right">';
+                                            echo '<a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>';
+                                            echo '<a href="wishlist.html"><i class="icon-heart"></i></a>';
+                                            echo '<a href="compare.html"><i class="icon-shuffle"></i></a>';
+                                            echo '</div>';
+                                            echo '</div>';
+                                            echo '</div>';
+                                            echo '<div class="content">';
+                                            echo '<div class="content-left">';
+                                            echo '<h6 class="title"><a href="product-details-default.html">' . $nome . '</a></h6>';
+                                            echo '<ul class="review-star">';
+                                            echo '<li class="fill"><i class="ion-android-star"></i></li>';
+                                            echo '<li class="fill"><i class="ion-android-star"></i></li>';
+                                            echo '<li class="fill"><i class="ion-android-star"></i></li>';
+                                            echo '<li class="fill"><i class="ion-android-star"></i></li>';
+                                            echo '<li class="empty"><i class="ion-android-star"></i></li>';
+                                            echo '</ul>';
+                                            echo '</div>';
+                                            echo '<div class="content-right">';
+                                            echo '<span class="price">' . $preco . '</span>';
+                                            echo '</div>';
+                                            echo '</div>';
+                                            echo '</div>';
+                                        }
+                                    } else {
+                                        echo "Nenhum serviço encontrado.";
+                                    }
+                                    ?>
+
                                </div>
                            </div>
                            <!-- If we need navigation buttons -->
@@ -284,7 +281,6 @@
            </div>
        </div>
    </div>
-   <!-- End Product Default Slider Section -->
 
    <!-- Start Banner Funcionarios Section -->
    <div class="banner-section">
@@ -317,33 +313,33 @@
             $con->close();
             ?>
 
-          </div>
        </div>
-       <!-- End Banner Section -->
+   </div>
+   <!-- End Banner Section -->
 
 
-       <!-- Start Instagramr Section -->
-       <div class="instagram-section section-top-gap-100 section-inner-bg">
-           <div class="instagram-wrapper" data-aos="fade-up" data-aos-delay="0">
-               <div class="container">
-                   <div class="row">
-                       <div class="col-12">
-                           <div class="instagram-box">
-                               <div id="instagramFeed" class="instagram-grid clearfix">
-                                   <a href="https://www.instagram.com/p/CCFOZKDDS6S/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-1.jpg" alt=""></a>
-                                   <a href="https://www.instagram.com/p/CCFOYDNjWF5/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-2.jpg" alt=""></a>
-                                   <a href="https://www.instagram.com/p/CCFOXH6D-zQ/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-3.jpg" alt=""></a>
-                                   <a href="https://www.instagram.com/p/CCFOVcrDDOo/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-4.jpg" alt=""></a>
-                                   <a href="https://www.instagram.com/p/CCFOUajjABP/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-5.jpg" alt=""></a>
-                                   <a href="https://www.instagram.com/p/CCFOS2MDmjj/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-6.jpg" alt=""></a>
-                               </div>
-                               <div class="instagram-link">
-                                   <h5><a href="https://www.instagram.com/myfurniturecom/" target="_blank" rel="noopener noreferrer">HONOTEMPLATE</a></h5>
-                               </div>
+   <!-- Start Instagramr Section -->
+   <div class="instagram-section section-top-gap-100 section-inner-bg">
+       <div class="instagram-wrapper" data-aos="fade-up" data-aos-delay="0">
+           <div class="container">
+               <div class="row">
+                   <div class="col-12">
+                       <div class="instagram-box">
+                           <div id="instagramFeed" class="instagram-grid clearfix">
+                               <a href="https://www.instagram.com/p/CCFOZKDDS6S/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-1.jpg" alt=""></a>
+                               <a href="https://www.instagram.com/p/CCFOYDNjWF5/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-2.jpg" alt=""></a>
+                               <a href="https://www.instagram.com/p/CCFOXH6D-zQ/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-3.jpg" alt=""></a>
+                               <a href="https://www.instagram.com/p/CCFOVcrDDOo/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-4.jpg" alt=""></a>
+                               <a href="https://www.instagram.com/p/CCFOUajjABP/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-5.jpg" alt=""></a>
+                               <a href="https://www.instagram.com/p/CCFOS2MDmjj/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-6.jpg" alt=""></a>
+                           </div>
+                           <div class="instagram-link">
+                               <h5><a href="https://www.instagram.com/myfurniturecom/" target="_blank" rel="noopener noreferrer">HONOTEMPLATE</a></h5>
                            </div>
                        </div>
                    </div>
                </div>
            </div>
        </div>
-       <!-- End Instagramr Section -->
+   </div>
+   <!-- End Instagramr Section -->

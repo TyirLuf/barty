@@ -9,6 +9,11 @@ require("./php/connect.php");
 include "./php/functions.php";
 include "./php/cliente.php";
 include "./php/controllerUserData.php";
+
+
+require './PHPMailer/src/Exception.php';
+require './PHPMailer/src/PHPMailer.php';
+require './PHPMailer/src/SMTP.php';
 ?>
 
 <!DOCTYPE html>
@@ -400,6 +405,9 @@ include "./php/controllerUserData.php";
         case 14:
             require("./php/user-otp.php");
             break;
+        case 15:
+            require("./pages/enviarmsgm.php");
+            break;
     }
 
 
@@ -441,7 +449,7 @@ include "./php/controllerUserData.php";
                             <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="200">
                                 <h5 class="title">Endereço</h5>
                                 <ul class="footer-nav">
-                                    <li><a href="my-account.html">info@barty.com</a></li>
+                                    <li><a href="my-account.html">R. de Soares dos Reis 191, 4430-315 Vila Nova de Gaia</a></li>
                                 </ul>
                             </div>
                             <!-- End Footer Single Item -->
