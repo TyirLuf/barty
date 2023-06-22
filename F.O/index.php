@@ -9,7 +9,7 @@ require("./php/connect.php");
 include "./php/functions.php";
 include "./php/cliente.php";
 include "./php/controllerUserData.php";
-
+include "./pages/login-registro/utlizador.php";
 
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
@@ -355,7 +355,7 @@ require './PHPMailer/src/SMTP.php';
         5 => "./pages/sobre.php",
         6 => "./pages/contact.php",
         7 => "./pages/calendar.php",
-        8 => "./pages/login.php",
+        8 => "./pages/login-registro/login.php",
         9 => "./pages/signup.php",
         10 => "./pages/perfil_func.php",
         21 => "./php/user-otp.php",
