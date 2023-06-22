@@ -1,62 +1,66 @@
 <?php
-    /*
-		Title Function That Echo The Page Title In Case The Page Has The Variable $pageTitle And Echo Default Title For Other Pages
-	*/
-	function getTitle()
-	{
-		global $pageTitle;
-		if(isset($pageTitle))
-			echo $pageTitle." | Barty Barbershop ";
-		else
-			echo "Bart Barbershop";
-	}
+    function testHour($horarioAtual, $abertura, $fechamento){ 
+        $dadosEstabelecimento = [];
 
-	/*
-		This function returns the number of items in a given table
-	*/
+        if ($horarioAtual >= $abertura && $horarioAtual < $fechamento){
+            $status = "aberto";
+            $statusText = "Aberto";
+        }
+        else{
+            $status = "fechado";
+            $statusText = "Fechado";
+        }
 
-    function countItems($item,$table)
-	{
-		global $con;
-		$stat_ = $con->prepare("SELECT COUNT($item) FROM $table");
-		$stat_->execute();
-		
-		return $stat_->fetchColumn();
-	}
+        array_push($dadosEstabelecimento, $status, $statusText);
 
-    /*
-	
-	** Check Items Function
-	** Function to Check Item In Database [Function with Parameters]
-	** $select = the item to select [Example : user, item, category]
-	** $from = the table to select from [Example : users, items, categories]
-	** $value = The value of select [Example: Ossama, Box, Electronics]
-	*/
-	function checkItem($select, $from, $value)
-	{
-		global $con;
-		$statment = $con->prepare("SELECT $select FROM $from WHERE $select = ? ");
-		$statment->execute(array($value));
-		$count = $statment->rowCount();
-		
-		return $count;
-	}
+        return $dadosEstabelecimento;
+    }
 
+    function getStatus($horarioAbertura, $horarioFechamento, $horarioAberturaFinalSemana, $horarioFechamentoFinalSemana){
+        $dados = [];
+        date_default_timezone_set('Europe/Lisbon');
+        $horarioAtual = date("H:i");
+        $diaSemana = date("w");
 
-  	/*
-    	==============================================
-    	TEST INPUT FUNCTION, IS USED FOR SANITIZING USER INPUTS
-    	AND REMOVE SUSPICIOUS CHARS and Remove Extra Spaces
-    	==============================================
-	
-	*/
+        // O sistema não faz agendamento aos domingos
+        if($diaSemana != 7){
+            // se for sábado, ele considera os horários especiais de funcionamento
+            if($diaSemana != 6){
+                $statusEstabelecimento = testHour($horarioAtual, $horarioAbertura, $horarioFechamento);
+            }
+            else{
+                $statusEstabelecimento = testHour($horarioAtual, $horarioAberturaFinalSemana, $horarioFechamentoFinalSemana);
+            }
+        }
+        else{
+            $statusEstabelecimento[0] = "fechado";
+            $statusEstabelecimento[1] = "Fechado";
+        }
 
-  	function test_input($data) 
-  	{
-      	$data = trim($data);
-      	$data = stripslashes($data);
-      	$data = htmlspecialchars($data);
-      	return $data;
-  	}
+        $cssStatus = "status-{$statusEstabelecimento[0]}";  
 
+        if(strlen($horarioAbertura) == 0 && strlen($horarioFechamento) == 0){
+            $horarioAberturaConv = "Sem horário cadastrado";
+            $horarioFechamentoConv = "";
+        }
+        else{
+            if($diaSemana != 6){
+                // Pega apenas o primeiro dígito do horário de abertura
+                $horarioAberturaConv = substr($horarioAbertura, 1, 4)." - ";
+                // Pega apenas o primeiro dígito do horário de fechamento
+                $horarioFechamentoConv = substr($horarioFechamento, 0, 5);
+            }
+            else{
+                // Pega apenas o primeiro dígito do horário de abertura
+                $horarioAberturaConv = substr($horarioAberturaFinalSemana, 1, 4)." - ";
+                // Pega apenas o primeiro dígito do horário de fechamento
+                $horarioFechamentoConv = substr($horarioFechamentoFinalSemana, 0, 5);
+            }
+        }
+
+        // retorna os dados relacionados ao status de funcionamento das barbearias
+        array_push($dados, $cssStatus, $statusEstabelecimento[1], $horarioAberturaConv, $horarioFechamentoConv);
+
+        return $dados;
+    }
 ?>

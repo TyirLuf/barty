@@ -1,229 +1,420 @@
-Skip to content
-Product
-Solutions
-Open Source
-Pricing
-Search
-Sign in
-Sign up
-jairiidriss
-/
-barbershop-website-php-mysql
-Public
-Code
-Issues
-Pull requests
-2
-Actions
-Projects
-Security
-Insights
-barbershop-website-php-mysql/Design/css/appointment-page-style.css
-@jairiidriss
-jairiidriss Initial commit
-Latest commit 1788566 on Nov 23, 2021
- History
- 1 contributor
-185 lines (165 sloc)  3.1 KB
- 
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 
-body
-{
-    background: #f7f7f7;
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.text_header
-{
-    margin-bottom: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 1.5;
-    margin-top: 22px;
+html {
+  height: 100vh;
 }
 
-.booking_section
-{
-    max-width: 720px;
-    margin: 50px auto;
-    /*min-height: 500px;*/
+body {
+  height: 100vh;
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
 }
 
-.items_tab
-{
-    border-radius: 4px;
+main {
+  height: 100vh;
+  background-color: hsl(217, 100%, 97%);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar {
+  height: 30%;
+  background: url("./assets/images/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.next-button {
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  position: absolute;
+  top: 2vh;
+  right: 5vw;
+  padding: 10px;
+  font-size: 1rem;
+}
+.back-button {
+  color: hsl(231, 11%, 63%);
+  position: absolute;
+  top: 2vh;
+  left: 5vw;
+  padding: 10px;
+  font-size: 1rem;
+  border: 0;
+  background: transparent;
+}
+
+.sidebar-step--number {
+  height: 2rem;
+  width: 2rem;
+  border: 2px solid hsl(228, 100%, 84%);
+  color: hsl(0, 0%, 100%);
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5vh 3vw;
+}
+
+.sidebar-step--number.active {
+  background-color: hsl(228, 100%, 84%);
+  color: hsl(213, 96%, 18%);
+}
+
+.step-content {
+  width: 90vw;
+  height: auto;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 10px;
+  z-index: 2;
+  position: fixed;
+  top: 10%;
+}
+.sidebar-step--details {
+  display: none;
+}
+.footer-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 10vh;
+  background: hsl(231, 100%, 99%);
+}
+.inactive {
+  display: none;
+}
+
+.step-content {
+  text-align: left;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.step-content__header-description {
+  margin: 2vh 0;
+  color: hsl(231, 11%, 63%);
+}
+
+.step-content__content {
+  display: flex;
+  flex-direction: column;
+}
+.step-content__content > input {
+  width: 90%;
+  height: 2rem;
+  border: 1px solid hsl(231, 11%, 63%);
+  padding: 5%;
+  border-radius: 5px;
+  margin-top: 0.5vh;
+}
+.step-content__content > label {
+  font-size: 0.8rem;
+}
+.plan,
+.addon {
+  display: flex;
+  align-items: center;
+  border: 0.5px solid hsl(231, 11%, 63%);
+  margin: 1rem 0;
+  padding: 5%;
+  height: 10vh;
+  border-radius: 10px;
+}
+.addon-details {
+  display: flex;
+  flex-direction: column;
+  padding: 5vw;
+  font-size: 0.8rem;
+  font-weight: bold;
+  width: 50vw;
+  color: hsl(243, 100%, 62%);
+}
+.addon--price {
+  font-size: 00.8rem;
+  color: hsl(243, 100%, 62%);
+}
+.addon-details > div:nth-child(2) {
+  font-size: 00.8rem;
+  font-weight: 200;
+  color: hsl(231, 11%, 63%);
+}
+
+.plan.selected,
+.addon.selected {
+  border: 1px solid hsl(243, 100%, 62%);
+  background-color: hsl(217, 100%, 97%);
+}
+.plan > div {
+  padding: 10%;
+}
+.plan > div > div:nth-child(2) {
+  font-size: 00.8rem;
+  color: hsl(231, 11%, 63%);
+}
+.cart-items {
+  background-color: hsl(231, 100%, 99%);
+}
+.cart-item {
+  display: flex;
+  margin: 1vh;
+  padding: 1vh;
+  color: hsl(231, 11%, 63%);
+}
+.cart-item > div:nth-child(1) {
+  width: 70%;
+}
+.cart-item > div:nth-child(2) {
+  color: hsl(243, 100%, 62%);
+}
+.cart-item__plan {
+  display: flex;
+  flex-direction: column;
+}
+.total {
+  margin-top: 2vh;
+}
+.cart-item__plan,
+#selected-plan-price {
+  color: hsl(213, 96%, 18%);
+  font-weight: bold;
+}
+.total > div:nth-child(2) {
+  font-weight: bold;
+}
+
+.switch-container {
+  background-color: hsl(217, 100%, 97%);
+  border-radius: 10px;
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inactive-plan-cycle {
+  color: hsl(231, 11%, 63%);
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.8rem;
+  height: 1rem;
+}
+
+.error {
+  color: red;
+  border-color: red;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(213, 96%, 18%);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: hsl(213, 96%, 18%);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px hsl(213, 96%, 18%);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.thankyou {
+  padding: 2vh;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.thankyou img {
+  width: 10vw;
+  height: 10vh;
+}
+
+.thankyou p {
+  margin-top: 2vh;
+  color: hsl(231, 11%, 63%);
+}
+
+@media (min-width: 475px) {
+  body {
+    background-color: hsl(217, 100%, 97%);
+    height: auto;
+  }
+  main {
     background-color: white;
-    overflow: hidden;
-    box-shadow: 0 0 5px 0 rgba(60, 66, 87, 0.04), 0 0 10px 0 rgba(0, 0, 0, 0.04);
-}
-
-.itemListElement
-{
-    font-size: 14px;
-    line-height: 1.29;
-    border-bottom: solid 1px #e5e5e5;
-    cursor: pointer;
-    padding: 16px 12px 18px 12px;
-}
-
-.item_details
-{
-    width: auto;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
+    height: 70vh;
+    width: 70%;
+    margin: 10vh auto;
+    border-radius: 10px;
+    position: relative;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-}
-
-.servide_name
-{
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    padding-right: 15px;
-    color: #979797;
-    -webkit-flex: 1;
-}
-
-.item_label
-{
-    color: #9e8a78;
-    border-color: #9e8a78;
-    background: white;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active 
-{
-    color: #fff;
-    background-color: #9e8a78;
-    border-color: #9e8a78;
-}
-
-.item_select_part
-{
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.select_item_bttn
-{
-    width: 55px;
-    display: flex;
-    margin-left: 30px;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
-}
-
-.service_duration_field
-{
-    text-align: right;
-    min-width: 60px;
-    width: auto;
-    color: rgb(151, 151, 151);
-    line-height: 1.29;
-    font-size: 14px;
-}
-
-.service_price_field
-{
-    width: auto;
-    display: flex;
-    margin-left: 30px;
-    -webkit-box-align: baseline;
-    align-items: baseline;
-}
-
-.radio_employee_select
-{
+  }
+  .sidebar {
+    height: 90%;
+    background: url("./assets/images/bg-sidebar-desktop.svg");
+    background-repeat: no-repeat;
+    background-position: center;
     position: absolute;
-    clip: rect(0,0,0,0);
-    pointer-events: none;
-}
+    top: 0;
+    left: 0;
+    width: 30%;
+    display: flex;
+    margin: 3vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 10px;
+  }
+  .sidebar-step {
+    width: 15vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    margin: 1vw;
+  }
+  .sidebar-step--number {
+    margin-right: 0;
+  }
 
-/* Make circles that indicate the steps of the form: */
-.step 
-{
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbbbbb;
-    border: none;  
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.5;
+  .sidebar-step--details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 2vw;
+    font-size: 0.8rem;
+    color: hsl(231, 11%, 63%);
+  }
+  .sidebar-step--details > div:nth-child(2) {
+    color: white;
+    font-weight: bold;
+  }
+  .step-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    overflow: hidden;
+    padding: 0%;
+    height: 90%;
+    font-size: 0.8rem;
+  }
+  .step-content__content > input {
+    width: 90%;
+    height: 1.5rem;
+    border: 0.5px solid hsl(231, 11%, 63%);
+    padding: 5%;
+    border-radius: 5px;
+    margin-top: 0.5vh;
+  }
+  .footer-nav {
+    position: absolute;
+    width: 90%;
+    bottom: 10;
+    left: 20;
+    margin-right: 0.5vh;
+    background-color: white;
+  }
+  .next-button {
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 4vh;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .plan,
+  .switch-container,
+  .addons {
+    width: 90%;
+    height: 4rem;
+  }
+  .switch-container {
+    width: 90%;
+    height: 2rem;
+  }
+  .back-button {
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 4vh;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
-
-.step.active 
-{
-    opacity: 1;
-}
-
-/* Mark the steps that are finished and valid: */
-.step.finish 
-{
-    background-color: #4CAF50;
-}
-
-.next_prev_buttons
-{
-    background-color: #4CAF50;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 17px;
-    cursor: pointer;
-}
-
-.tab_reservation
-{
-    display: none;
-}
-
-.client_details_div .form-control
-{
-    background-color: #fff;
-    border-radius: 0;
-    padding: 25px 10px;
-    box-shadow: none;
-    border: 2px solid #eee;
-    margin: 10px 0px;
-}
-
-.client_details_div .form-control:focus 
-{
-    border-color: #9e8a78;
-    box-shadow: none;
-    outline: none;
-}
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-barbershop-website-php-mysql/appointment-page-style.css at main · jairiidriss/barbershop-website-php-mysql · GitHub

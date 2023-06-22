@@ -1,0 +1,847 @@
+/* this is the CSS page for the web https://dvirlibrary.000webhostapp.com */
+
+
+
+body{
+
+    background-color:#c6ab80;
+    
+    font-family: arial, helvetica, sans-serif;
+    
+    font-size:20px;
+    
+    cursor:inherit;
+    
+    color:white;
+    
+    }
+    
+    
+    
+    body.b{
+    
+        text-align:right!important;
+    
+        text-align:-webkit-right!important;
+    
+    }
+    
+    
+    
+    body.errors{
+    
+        color:white;
+    
+    }
+    
+    
+    
+    div.errD{
+    
+        border:10px solid #b7bcc0;
+    
+        margin:20px;
+    
+    }
+    
+    @media (max-width: 992px) and (min-width: 601px){
+    
+        div.errD{
+    
+        color:white;border:5px solid #b7bcc0;
+    
+        margin:10px;
+    
+    }}
+    
+    @media (max-width: 601px){
+    
+    div.errD{
+    
+        color:white;border:1px solid #b7bcc0;
+    
+        margin:2px;
+    
+    }}
+    
+    
+    
+    body.errors p,h1,h2{
+    
+        margin: 10px!important;
+    
+    }
+    
+    body.errors li{
+    
+        padding:2px 20px 2px 5px;
+    
+    }
+    
+    
+    
+    body.home{
+    
+        text-align:right;
+    
+    }
+    
+    
+    
+    .wood1{
+    
+        background:#deb887;
+    
+    }
+    
+    
+    
+    h1.w3{font-size:36px}h2.w3{font-size:30px}h3.w3{font-size:24px}h4.w3{font-size:20px}h5.w3{font-size:18px}h6.w3{font-size:16px}
+    
+    h1.w3,h2.w3,h3.w3,h4.w3,h5.w3,h6.w3{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}
+    
+    
+    
+    marquee:hover {
+    
+        marquee:stop;
+    
+    }
+    
+    marquee{
+    
+        width:50%;
+    
+        align:center;
+    
+    }
+    
+    
+    
+    table{
+    
+    text-align:right;
+    
+    font-family: arial, helvetica, sans-serif;
+    
+    color:white;
+    
+    cursor:default;
+    
+    display: table;
+    
+    border-spacing: 2px;
+    
+    border-color: grey;
+    
+    font-size:20px;
+    
+    }
+    
+    
+    
+    /* -!- */
+    
+    
+    
+    .custom {
+    
+      cursor: url("https://dvirlibrary.000webhostapp.com/img/avatar1.png"), auto;
+    
+    }
+    
+    iframe.fileview{
+    
+        width:200px;
+    
+        height:400px;
+    
+        margin-top: 20px;
+    
+      margin-bottom: 30px;
+    
+    
+    
+      -moz-border-radius: 12px;
+    
+      -webkit-border-radius: 12px;
+    
+      border-radius: 12px;
+    
+    
+    
+      -moz-box-shadow: 4px 4px 14px #000;
+    
+      -webkit-box-shadow: 4px 4px 14px #000;
+    
+      box-shadow: 4px 4px 14px #000;
+    
+    }
+    
+    
+    
+    a.phpAction{
+    
+        text-align:center;
+    
+        font-weight:bold;
+    
+        text-decoration:none;
+    
+    }
+    
+    a.oran-whi{
+    
+        text-align:center;
+    
+        text-decoration:none;
+    
+        color:#6074e5;
+    
+    }
+    
+    a.oran-whi:hover{
+    
+        color:white;
+    
+    }
+    
+    div.formT1 input[type=submit],.submit {
+    
+        width: 95%;
+    
+        background-color: #4CAF50;
+    
+        color: white;
+    
+        padding: 14px 20px;
+    
+        margin: 8px 0;
+    
+        border: none;
+    
+        border-radius: 4px;
+    
+        cursor: pointer;
+    
+    }
+    
+    div.formT1 input[type=submit]:hover ,.submit:hover {
+    
+        background-color: #45a049;
+    
+    }
+    
+    div.formT1 p{
+    
+        width:10%;
+    
+    }
+    
+    div.formT1 input[type=text], select {
+    
+        width: 80%;
+    
+        padding: 12px 12px;
+    
+        margin: 8px 0;
+    
+        display: inline-block;
+    
+        border: 1px solid #ccc;
+    
+        border-radius: 4px;
+    
+        box-sizing: border-box;
+    
+    }
+    
+    div.formT1 input[type=password], select {
+    
+        width: 80%;
+    
+        padding: 12px 12px;
+    
+        margin: 8px 0;
+    
+        display: inline-block;
+    
+        border: 1px solid #ccc;
+    
+        border-radius: 4px;
+    
+        box-sizing: border-box;
+    
+    }
+    
+    div.formT1 {
+    
+        font-size:20px;
+    
+        border-radius: 5px;
+    
+        background-color: #f2f2f2;
+    
+        padding: 20px;
+    
+        color: black;
+    
+        cursor:default;
+    
+    }
+    
+    div.formT1 fieldset{
+    
+        border: 2px solid #000000;
+    
+    }
+    
+    div.formT1 legend{
+    
+        cursor:default;
+    
+    }
+    
+    div.formT1 button, input[type=button]{
+    
+        width: 80%;
+    
+        padding: 12px 12px;
+    
+        margin: 8px 0;
+    
+        display: inline-block;
+    
+        border: 1px solid #ccc;
+    
+        border-radius: 4px;
+    
+        box-sizing: border-box;
+    
+    }
+    
+    @media(min-width:900px){
+    
+        .formT2{width:60%!important}
+    
+    }
+    
+    @media(max-width:600px){
+    
+        .formT2{width:90%!important}
+    
+    }
+    
+    .formT2{width:75%;}
+    
+    
+    
+    
+    
+    a.marlink{
+    
+        color:white;
+    
+        text-decoration:none;
+    
+    }
+    
+    a.marlink:hover{
+    
+        color:#6074e5;
+    
+        text-decoration:pointer;
+    
+    }
+    
+    
+    
+    a.downloads{
+    
+        color:#FAFAD2;
+    
+        text-decoration:none;
+    
+    }
+    
+    a.downloads:hover{
+    
+        color:#87CEFA;
+    
+        text-decoration:pointer;
+    
+        background-color:#A0522D;
+    
+    }
+    
+    
+    
+    span.none{
+    
+        color:#993300;
+    
+    }
+    
+    
+    
+    /* -!- */
+    
+    #normal{
+    
+        right:200px;
+    
+    }
+    
+    
+    
+    @media (min-width:1253px){
+    
+    .w3schools-logo .dotcom {color:#4CAF50}
+    
+    .top {
+    
+    position:relative;
+    
+    background-color:#993300;
+    
+    height:68px;
+    
+    padding-top:30px;
+    
+    line-height:50px;
+    
+    overflow:hidden;
+    
+    z-index:2;
+    
+    }
+    
+    .w3schools-logo:hover{
+    
+        color:#4CAF50;
+    
+    }
+    
+    
+    
+    .w3schools-logo {
+    
+    font-family:fontawesome;
+    
+    text-decoration:none;
+    
+    line-height:1;
+    
+    -webkit-font-smoothing:antialiased;
+    
+    -moz-osx-font-smoothing:grayscale;
+    
+    font-size:30px;
+    
+    letter-spacing:3px;
+    
+    color:#5e9999;
+    
+    display:block;
+    
+    position:absolute;
+    
+    top:17px;
+    
+    background-color: transparent;
+    
+    }}
+    
+    @media (max-width:1253px){
+    
+    .w3schools-logo .dotcom {color:#4CAF50}
+    
+    .top {
+    
+    position:relative;
+    
+    background-color:#993300;
+    
+    height:34px;
+    
+    padding-top:10px;
+    
+    line-height:25px;
+    
+    overflow:hidden;
+    
+    z-index:2;
+    
+    }
+    
+    .w3-wide{
+    
+        letter-spacing:4px!important;
+    
+        font-size:15px!important;
+    
+    }
+    
+    .w3schools-logo:hover{
+    
+        color:#4CAF50;
+    
+    }
+    
+    
+    
+    .w3schools-logo {
+    
+    font-family:fontawesome;
+    
+    text-decoration:none;
+    
+    line-height:1;
+    
+    -webkit-font-smoothing:antialiased;
+    
+    -moz-osx-font-smoothing:grayscale;
+    
+    font-size:15px;
+    
+    letter-spacing:3px;
+    
+    color:#5e9999;
+    
+    display:block;
+    
+    position:absolute;
+    
+    top:17px;
+    
+    background-color: transparent;
+    
+    }}
+    
+    @media (max-width:1000px){
+    
+    #titlel{
+    
+        display:none;
+    
+    }
+    
+    }
+    
+    .men{
+    
+        font-size:15px!important;
+    
+        font-family: Verdana,sans-serif!important;
+    
+    }
+    
+    #leftmenuinnerinner{
+    
+        overflow-y: scroll;
+    
+    }
+    
+    .navButton{
+    
+        width:48.425px!important;
+    
+    }
+    
+    .navButton2{
+    
+        width:35.425px!important;
+    
+    }
+    
+    #menu{
+    
+        right:0px;
+    
+        top:0px;
+    
+        padding-top:44px;
+    
+        width:10%;
+    
+        height:100%;
+    
+        background:solid green;
+    
+    }
+    
+    #leftmenuinnerinner{
+    
+        right:2px;
+    
+        top:48px;
+    
+        position:fixed;
+    
+        height:95%;
+    
+        width:200px;
+    
+    }
+    
+    #leftmenuinnerinner a{
+    
+        width:100%;
+    
+        display: inline-block;
+    
+        float:right!important;
+    
+        text-align:right!important;
+    
+    }
+    
+    
+    
+    #myBtn {
+    
+      display: none;
+    
+      position: fixed;
+    
+      bottom: 20px;
+    
+      right: 30px;
+    
+      z-index: 99;
+    
+      border: none;
+    
+      outline: none;
+    
+      background-color: red;
+    
+      color: white;
+    
+      cursor: pointer;
+    
+      padding: 15px;
+    
+      border-radius: 10px;
+    
+    }
+    
+    #myBtn:hover {
+    
+      background-color: #555;
+    
+    }
+    
+    
+    
+    h1 #one{
+    
+        color:#8CBAFF;
+    
+        font-size:20px;
+    
+    }
+    
+    table#ta2 {
+    
+        font-size: 16px;
+    
+        font-size: 20px;
+    
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    
+        border-collapse: collapse;
+    
+        border-spacing:1;
+    
+        width: 50%;
+    
+        font-weight:bold;
+    
+    }
+    
+    table#ta2 td:hover{
+    
+    background-color:#995300;
+    
+    color:#FFF;
+    
+    }
+    
+    table#ta2 a{
+    
+    color:#FFF;
+    
+    text-decoration:none;
+    
+    }
+    
+    table#ta1 {
+    
+        font-size: 16px;
+    
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    
+        border-collapse: collapse;
+    
+        border-spacing:0;
+    
+        width: 50%;
+    
+    }
+    
+    table#ta1 tr:hover{
+    
+    background-color:orange;
+    
+    color:#FFF;
+    
+    }
+    
+    
+    
+    table#ta1 td{
+    
+    padding:5px;
+    
+    }
+    
+    table#adtab{
+    
+        font-size: 16px;
+    
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    
+        border-collapse: collapse;
+    
+        border-spacing:0;
+    
+        width: 50%;
+    
+    }
+    
+    
+    
+    table#adtab a:hover{
+    
+    background-color:#ffffcc;
+    
+    color:#000;
+    
+    }
+    
+    table#adtab a{
+    
+    color:#FFF;
+    
+    width:100%;
+    
+    height:100%;
+    
+    display: inline-block;
+    
+    }
+    
+    table#adtab td:hover{
+    
+    background-color:#ffffcc;
+    
+    color:#ffffff;
+    
+    padding: 0px 25px;
+    
+    }
+    
+    
+    
+    a#but{
+    
+        color:white;
+    
+        text-decoration:none;
+    
+    }
+    
+    a#but:hover{
+    
+        color:white;
+    
+        text-decoration:pointer;
+    
+        background-color:#A0522D;
+    
+    }
+    
+    
+    
+    button#logOutB{
+    
+        color:#FAFAD2;
+    
+        text-decoration:none;
+    
+        background-color:orange;
+    
+        margin: 5px;
+    
+    }
+    
+    
+    
+    button#logOutB:hover{
+    
+        color:orange;
+    
+        text-decoration:pointer;
+    
+        background-color:#A0522D;
+    
+    }
+    
+    
+    
+    /* -!- */
+    
+    @media (min-width:1253px){.d3-hide-large{display:none!important}}
+    
+    @media (max-width:1253px) and (min-width:601px){.d3-hide-medium{display:none!important}}
+    
+    @media (max-width:600px){.d3-hide-small{display:none!important}}
+    
+    
+    
+    .w3-spin{animation:w3-spin 2s infinite linear}@keyframes w3-spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}
+    
+    .w3-animate-fading{animation:fading 10s infinite}@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+    
+    .w3-animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
+    
+    .w3-animate-top{position:relative;animation:animatetop 0.4s}@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
+    
+    .w3-animate-left{position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
+    
+    .w3-animate-right{position:relative;animation:animateright 0.4s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
+    
+    .w3-animate-bottom{position:relative;animation:animatebottom 0.4s}@keyframes animatebottom{from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}
+    
+    .w3-animate-zoom {animation:animatezoom 0.6s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
+    
+    .w3-tiny{font-size:10px!important}.w3-small{font-size:12px!important}.w3-medium{font-size:15px!important}.w3-large{font-size:18px!important}
+    
+    .w3-xlarge{font-size:24px!important}.w3-xxlarge{font-size:36px!important}.w3-xxxlarge{font-size:48px!important}.w3-jumbo{font-size:64px!important}
+    
+    
+    
+    /* -!- */
+    
+    
+    
+    .fa-bars:before{content:"\f0c9"}
+    
+    @font-face{font-family:'FontAwesome';src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0');src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    
+    
+    
+    
+    
+    img[src*="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png"]{display:none;}

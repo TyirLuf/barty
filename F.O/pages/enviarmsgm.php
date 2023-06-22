@@ -1,46 +1,42 @@
 <?php
 
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 
-$mail = new PHPMailer(true);
+// Recupera os dados do formulário
+$name = $_POST["nome"];
+$email = $_POST["email"];
+$assunto = $_POST["assunto"];
+$mensagem = $_POST["mensagem"];
 
-$alert = '';
+$mail = new PHPMailer(true); // Criação do objeto PHPMailer
 
-if(isset($_POST['btn_enviar'])){
-    $name = $_POST["nome"];
-    $email = $_POST["email"];
-    $assunto = $_POST["assunto"];
-    $mensagem = $_POST["mensagem"];
+try {
+    $mail ->isSMTP();
+    $mail ->Host = 'sandbox.smtp.mailtrap.io';
+    $mail ->SMTPAuth = true;
+    $mail ->Port = 2525;
+    $mail ->Username = 'f0a7cd2f6e510d';
+    $mail ->Password = '2a42ed87cf339e';
 
-    try {
-        $mail -> isSMTP();
-        $mail -> SMTPAuth = true;
-        $mail -> Host = "smtp.gmail.com";
-        $mail -> Username = "yourmail@gmail.com";
-        $mail -> Password = "iqyfgllrjpwbpuey";
-        $mail -> SMTPSecure = "tls";
-        $mail -> Port = '587';
+    // Remetente
+    $mail->setFrom($email, $name);
+   
+    // Destinatario
+    $mail->addAddress(' inforbarty@gmail.com', 'Barty Barbearia');
 
-        $mail -> setFrom('yourmail@gmail.com');
-        $mail -> addAddress("inforbarty@gmail.com");
+    $mail->isHTML(true);
+    $mail->Subject = 'Mensagem Recebida do formulario de contato';
+    $mail->Body = 'Nome:'.$name. ',<br>
+    Email: '.$email.'<br><br>
+Assunto: '.$assunto.'<br>
+Mensagem: '.$mensagem.'';
+    
 
-        $mail -> isHTML(true);
-        $mail -> Subject = 'Message Received from Contact:'. $name;
-        $mail -> Body = "Nome: $name <br> Email: $email <br> Assunto: $assunto <br>Messagem: $mensagem";
-
-        $mail -> send();
-        $alert = "<div class='alert-success'><span>Mensagem enviada! Obrigado por nos contatar.</span></div>";
-
-    } catch (Exception $e) {
-        
-    }
-
+    $mail->send();
+    echo 'Mensagem enviada com sucesso!';
+} catch (Exception $e) {
+    echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
 }
-?>
-
-
-

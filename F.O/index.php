@@ -14,6 +14,7 @@ include "./php/controllerUserData.php";
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +32,15 @@ require './PHPMailer/src/SMTP.php';
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
     <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/default.css" />
+    <link rel="stylesheet" type="text/css" href="assts/styles/w3style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/styles/large.css" />
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css">
@@ -43,6 +49,10 @@ require './PHPMailer/src/SMTP.php';
     <link rel="stylesheet" href="assets/css/plugins/venobox.min.css">
     <link rel="stylesheet" href="assets/css/plugins/jquery.lineProgressbar.css">
     <link rel="stylesheet" href="assets/css/plugins/aos.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/sass/style.css">
@@ -52,6 +62,8 @@ require './PHPMailer/src/SMTP.php';
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/agendar.css">
 
 </head>
 
@@ -87,7 +99,7 @@ require './PHPMailer/src/SMTP.php';
                                                 <li><a href="./?p=3">Cortes de Cabelo</a></li>
                                                 <li><a href="./?p=4">Barba</a></li>
                                                 <hr>
-                                                <li><a href="404.html">Todos</a></li>
+                                                <li><a href="./?p=2">Todos</a></li>
                                             </ul>
                                         </li>
                                         <li>
@@ -178,12 +190,6 @@ require './PHPMailer/src/SMTP.php';
         </div>
     </div>
     <!-- Fim da navbar para telefone -->
-
-
-
-
-
-
     <!-- Start Offcanvas Mobile Menu Section -->
     <div id="offcanvas-about" class="offcanvas offcanvas-rightside offcanvas-mobile-about-section">
         <!-- Start Offcanvas Header -->
@@ -226,33 +232,6 @@ require './PHPMailer/src/SMTP.php';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!--  Start Offcanvas Mobile Menu Section -->
     <div id="mobile-menu-offcanvas" class="offcanvas offcanvas-rightside offcanvas-mobile-menu-section">
         <!-- Start Offcanvas Header -->
@@ -275,7 +254,7 @@ require './PHPMailer/src/SMTP.php';
                                 <li><a href="./?p=3">Haircut</a></li>
                                 <li><a href="./?p=4">Barba</a></li>
                                 <hr>
-                                <li><a href="404.html">Todos</a></li>
+                                <li><a href="./?p=2">Todos</a></li>
                             </ul>
                         </li>
                         <li><a href="./?p=5">Blog</a></li>
@@ -324,6 +303,7 @@ require './PHPMailer/src/SMTP.php';
             <ul class="offcanvas-cart-action-button">
                 <li><a href="perfil.html" class="btn btn-block btn-golden">Ver Perfil</a></li>
                 <li><a href="notificacoes.html" class="btn btn-block btn-golden mt-5">Notificações</a></li>
+                <li><a href="notificacoes.html" class="btn btn-block btn-golden mt-5">Defenições</a></li>
                 <li><a href="logout.html" class="btn btn-block btn-golden mt-5">Logout</a></li>
             </ul>
         </div>
@@ -348,75 +328,72 @@ require './PHPMailer/src/SMTP.php';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--- Mapeamento de Paginas-->
     <?php
 
+    $pages = [
+        0 => "./pages/home.php",
+        1 => "./pages/agenda.php",
+        2 => "./pages/servicos.php",
+        3 => "./pages/servico_cortes.php",
+        4 => "./pages/servico_barba.php",
+        5 => "./pages/sobre.php",
+        6 => "./pages/contact.php",
+        7 => "./pages/calendar.php",
+        8 => "./pages/login.php",
+        9 => "./pages/signup.php",
+        10 => "./pages/perfil_func.php",
+        21 => "./php/user-otp.php",
+        12 => "./php/user-otp.php",
+        13 => "./php/user-otp.php",
+        14 => "./php/user-otp.php",
+        15 => "./pages/enviarmsgm.php",
+        16 => "./pages/verificar_code.php",
+        20 => "./pages/login/conteudo.php",
+        21 => "./pages/login/conteudo_login.php",
+    ];
 
-    switch ($op) {
-            // Página inicial
-        case 0:
-            require("./pages/home.php");
-            break;
-            // Página agendamento
-        case 1:
-            require("./pages/agendamento.php");
-            break;
-            //Página todos Serviços
-        case 2:
-            require("./pages/servicos.php");
-            break;
-            //Página serviços - cortes
-        case 3:
-            require("./pages/servico_cortes.php");
-            break;
-            //Página serviços - barba 
-        case 4:
-            require("./pages/servico_barba.php");
-            break;
-            //Página sobre nós
-        case 5:
-            require("./pages/sobre.php");
-            break;
-            //Página contato 
-        case 6:
-            require("./pages/contact.php");
-            break;
-        case 7:
-            require("./pages/calendar.php");
-            break;
-        case 8:
-            require("./pages/login.php");
-            break;
-        case 9:
-            require("./pages/signup.php");
-            break;
-        case 10:
-            require("./pages/perfil_func.php");
-            break;
-            //php functions require//
-        case 21:
-            require("./php/user-otp.php");
-            break;
-        case 12:
-            require("./php/user-otp.php");
-            break;
-        case 13:
-            require("./php/user-otp.php");
-            break;
-        case 14:
-            require("./php/user-otp.php");
-            break;
-        case 15:
-            require("./pages/enviarmsgm.php");
-            break;
+    if (isset($pages[$op])) {
+        require($pages[$op]);
+    } else {
+        // Página de erro ou ação padrão em caso de opção inválida
+        require("./pages/error.php");
     }
-
-
-
-
-
-
-
     ?>
+    <!--Fim do mapeamento -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -449,7 +426,7 @@ require './PHPMailer/src/SMTP.php';
                             <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="200">
                                 <h5 class="title">Endereço</h5>
                                 <ul class="footer-nav">
-                                    <li><a href="my-account.html">R. de Soares dos Reis 191, 4430-315 Vila Nova de Gaia</a></li>
+                                    <li><a href="my-account.html">R. de Soares dos Reis 191, 4430-315 <br />Vila Nova de Gaia</a></li>
                                 </ul>
                             </div>
                             <!-- End Footer Single Item -->
@@ -537,16 +514,17 @@ require './PHPMailer/src/SMTP.php';
     <button class="material-scrolltop" type="button"></button>
 
     <!-- ::::::::::::::All JS Files here :::::::::::::: -->
+    <!-- ::::::::::::::All JS Files here :::::::::::::: -->
     <!-- Global Vendor, plugins JS -->
-    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <!-- <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
     <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
     <script src="assets/js/vendor/popper.min.js"></script>
     <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="assets/js/vendor/jquery-ui.min.js"></script>
+    <script src="assets/js/vendor/jquery-ui.min.js"></script>  -->
 
     <!--Plugins JS-->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
+    <!-- <script src="assets/js/plugins/swiper-bundle.min.js"></script>
     <script src="assets/js/plugins/material-scrolltop.js"></script>
     <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
     <script src="assets/js/plugins/jquery.zoom.min.js"></script>
@@ -555,7 +533,24 @@ require './PHPMailer/src/SMTP.php';
     <script src="assets/js/plugins/jquery.lineProgressbar.js"></script>
     <script src="assets/js/plugins/aos.min.js"></script>
     <script src="assets/js/plugins/jquery.instagramFeed.js"></script>
-    <script src="assets/js/plugins/ajax-mail.js"></script>
+    <script src="assets/js/plugins/ajax-mail.js"></script> -->
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+    <script src="js/login/alerts_login.js"></script>
+    <script src="js/login/validacao_login.js"></script>
+    <script type="module" src="js/login/animacao_login.js"></script>
+    <script src="js/jquery.mask.min.js"></script>
+    <script src="js/mask_forms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>  -->
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
     <script src="assets/js/vendor/vendor.min.js"></script>
@@ -563,7 +558,10 @@ require './PHPMailer/src/SMTP.php';
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+
+
 </body>
+
 
 
 
