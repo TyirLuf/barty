@@ -6,7 +6,7 @@
                 <div class="mapouter">
                     <?php
                     $sql = "SELECT loc FROM empresa WHERE id = 1";
-                    $result = mysqli_query($con, $sql);
+                    $result = mysqli_query($conn, $sql);
                     
                     if (mysqli_num_rows($result) > 0) {
                         // Exibir o valor da coluna 'loc' em um elemento <div>
@@ -31,7 +31,7 @@
                 <div class="contact-details-wrapper section-top-gap-100" data-aos="fade-up" data-aos-delay="0">
                     <?php
                     $sql = "SELECT telefone, email, endereco FROM empresa";
-                    $result = $con->query($sql);
+                    $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();

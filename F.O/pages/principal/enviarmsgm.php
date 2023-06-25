@@ -18,8 +18,8 @@ try {
     $mail ->Host = 'sandbox.smtp.mailtrap.io';
     $mail ->SMTPAuth = true;
     $mail ->Port = 2525;
-    $mail ->Username = 'f0a7cd2f6e510d';
-    $mail ->Password = '2a42ed87cf339e';
+    $mail ->Username = '4fe49e09fde8ef';
+    $mail ->Password = '76c07a5408be72';
 
     // Remetente
     $mail->setFrom($email, $name);
