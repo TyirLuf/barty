@@ -8,14 +8,14 @@ include './pages/includes/navbar.php';
 
     $pages = [
         0 => "./pages/principal/home.php",
-        1 => "./pages/agenda.php",
+        1 => "./pages/agendar.php",
         2 => "./pages/servicos/servicos.php",
         3 => "./pages/servico_cortes.php",
         4 => "./pages/servico_barba.php",
         5 => "./pages/principal/sobre.php",
         6 => "./pages/principal/contact.php",
         7 => "./pages/calendar.php",
-        8 => "./pages/login/login.php",
+        8 => "./pages/login/login_1.php",
         9 => "./pages/login/registro.php",
         10 => "./pages/funcionario/perfil_func.php",
         21 => "./php/user-otp.php",

@@ -11,6 +11,7 @@ include "./pages/login-registro/utlizador.php";
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
+include_once './pages/login/message.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
@@ -34,11 +35,12 @@ require './PHPMailer/src/SMTP.php';
     <!-- Font awesome CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-   
+
 
 
 
     <!-- Vendor CSS -->
+    
     <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
     <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
@@ -62,13 +64,17 @@ require './PHPMailer/src/SMTP.php';
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/sass/style.css">
 
+    <!-- Appointment Page Stylesheet -->
+    <link rel="stylesheet" href="assets/css/appointment-page-style.css">
+
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <link rel="stylesheet" type="text/css" href="/assets/css/agendar.css">
+
 
 </head>
+
 <body>

@@ -1,5 +1,4 @@
-
-    <!-- Navbar -->
+   <!-- Navbar -->
     <header class="header-section d-none d-xl-block">
         <div class="header-wrapper">
             <div class="header-bottom header-bottom-color--golden section-fluid sticky-header sticky-color--golden">
