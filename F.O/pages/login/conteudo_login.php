@@ -1,43 +1,4 @@
-<?php
-ob_start();
-$conn = mysqli_connect("localhost", "root", "", "barty_teste");
 
-if (isset($_POST['entrar'])) {
-
-    if (empty($_POST['email']) || empty($_POST['password'])) {
-        require_once ("./pages/login/alert_login_vazio.php");
-        exit();
-    } else {
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = sha1(mysqli_real_escape_string($conn, $_POST['password']));
-        $query = " SELECT * FROM clientes WHERE email = '$email' and password = '$password' ";
-
-        $result = mysqli_query($conn, $query);
-
-        $dadoscliente = mysqli_fetch_assoc($result);
-
-        $row = mysqli_num_rows($result);
-
-        if ($row == 1) {
-            $_SESSION = $dadoscliente;
-            header("Location: ./");
-            exit();
-        } else {
-            $query = " SELECT * FROM funcionarios WHERE email = '$email' and senha = '$password' ";
-            $result = mysqli_query($conn, $query);
-            $dadosfuncionario = mysqli_fetch_assoc($result);
-            $row = mysqli_num_rows($result);
-            if ($row == 1) {
-                $_SESSION = $dadosfuncionario;
-                header("Location: ./");
-                exit();
-            } else {
-                require_once ("./pages/login/alert_senha.php");
-            }
-        }
-    }
-}
-?>
 
 <div class="customer-login">
     <div class="container">
@@ -46,7 +7,7 @@ if (isset($_POST['entrar'])) {
                 <div class=" col-lg-6 col-md-6">
             <div class="account_form" data-aos="fade-up" data-aos-delay="0">
                 <h3>Login</h3>
-                <form id="form_login" method="POST">
+                <form id="form_login"  action="./pages/login/valida-login.php" method="POST">
                     <div class="default-form-box">
                         <!-- O atributo onkeyup juntamente com a expressão regular impede que o espaços sejam digitados neste campo -->
                         <input onkeyup="this.value=this.value.replace(/[' ' çÇáÁàÀéèÉÈíìÍÌóòÓÒúùÚÙñÑ~&´`^{}[º$()\']/g,'')" type="text" class="form-control sb-form-input" id="login_email" placeholder="E-mail" name="email">

@@ -1,3 +1,10 @@
+<!-- PHP INCLUDES -->
+<?php
+include "./php/functions.php";
+?>
+<!-- Appointment Page Stylesheet -->
+<link rel="stylesheet" href="assets/css/appointment-page-style.css">
+
 <!-- BOOKING APPOINTMENT SECTION -->
 
 <section class="booking_section">
@@ -9,7 +16,7 @@
             {
             	// Selected SERVICES
 
-                $selected_services = $_POST['selected_services'];
+                $selected_services = $_POST['selected_servicos'];
 
                 // Selected EMPLOYEE
 
@@ -31,12 +38,12 @@
                 $client_phone_number = test_input($_POST['telefone']);
                 $client_email = test_input($_POST['email']);
 
-                $conn->begin_transaction();
+               $conn->begin_transaction();
 
                 try
                 {
 					// Check If the client's email already exist in our database
-					$stmtCheckClient = $conn->prepare("SELECT * FROM clientes WHERE email = ?");
+					$stmtCheckClient =$conn->prepare("SELECT * FROM clientes WHERE email = ?");
                     $stmtCheckClient->bind_param("s", $client_email);
                     $stmtCheckClient->execute();
                     $client_result = $stmtCheckClient->get_result()->fetch_assoc();
@@ -48,32 +55,33 @@
 					}
 					else
 					{
-						$stmtgetCurrentClientID = $conn->prepare("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'barty_teste' AND TABLE_NAME = 'clientes'");
+						$stmtgetCurrentClientID =$conn->prepare("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'barty_teste' AND TABLE_NAME = 'clientes'");
             
 						$stmtgetCurrentClientID->execute();
-						$client_id = $stmtgetCurrentClientID->get_result()->fetch_row()[0];
+						$client_id = $stmtgetCurrentClientID->get_result()->fetch_row();
 
-						$stmtClient = $conn->prepare("INSERT INTO clientes (primeiro_nome, ultimo_nome, telefone, email) VALUES (?, ?, ?, ?)");
-                        $stmtClient->bind_param("ssss", $client_first_name, $client_last_name, $client_phone_number, $client_email);
-                        $stmtClient->execute();
+						$stmtClient =$conn->prepare("INSERT INTO clientes(primeiro_nome,ultimo_nome,telefone,email) 
+									VALUES(?,?,?,?)");
+						$stmtClient->bind_param("ssss", $client_first_name, $client_last_name, $client_phone_number, $client_email);
+						$stmtClient->execute();
 					}
 
 
                     
 
-                    $stmtgetCurrentAppointmentID = $conn->prepare("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'barty_teste' AND TABLE_NAME = 'agendamentos'");
+                    $stmtgetCurrentAppointmentID =$conn->prepare("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'barty_teste AND TABLE_NAME = 'agendamentos'");
             
                     $stmtgetCurrentAppointmentID->execute();
-                    $appointment_id = $stmtgetCurrentAppointmentID->get_result()->fetch_row()[0];
+                    $appointment_id = $stmtgetCurrentAppointmentID->get_result()->fetch_row();
                     
-                    $stmt_appointment = $conn->prepare("INSERT INTO agendamentos (data, id_cliente, id_funcionario, start_time, end_time_expected) VALUES (?, ?, ?, ?, ?)");
-                    $stmt_appointment->bind_param("siiii", Date("Y-m-d H:i"), $client_id, $selected_employee, $start_time, $end_time);
+                    $stmt_appointment = $conn->prepare("INSERT INTO agendamentos(data, id_cliente, id_funcionario, start_time, end_time_expected ) VALUES(?, ?, ?, ?, ?)");
+                    $stmt_appointment->bind_param("sssss", Date("Y-m-d H:i"), $client_id[0], $selected_employee, $start_time, $end_time);
                     $stmt_appointment->execute();
 
                     foreach($selected_services as $service)
                     {
-                        $stmt = $con->prepare("INSERT INTO servicos_agendados (agendamento_id, servico_id) VALUES (?, ?)");
-                        $stmt->bind_param("ii", $agendamento_id, $service);
+                        $stmt = $conn->prepare("INSERT INTO servicos_agendados(agendamento_id, servico_id) VALUES(?, ?)");
+                        $stmt->bind_param("ii", $appointment_id[0], $service);
                         $stmt->execute();
                     }
                     
@@ -118,7 +126,7 @@
 				
 				<div class="items_tab">
         			<?php
-        				$stmt = $conn->prepare("SELECT * FROM servicos");
+        				$stmt = $conn->prepare("Select * from servicos");
                     	$stmt->execute();
                     	$rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
@@ -141,9 +149,9 @@
                                     ?>
                                     	<div class="select_item_bttn">
                                     		<div class="btn-group-toggle" data-toggle="buttons">
-													<label class="service_label item_label btn btn-secondary">
-														<input type="checkbox"  name="selected_services[]" value="<?php echo $row['servico_id'] ?>" autocomplete="off">Select
-													</label>
+												<label class="service_label item_label btn btn-secondary">
+													<input type="checkbox"  name="selected_services[]" value="<?php echo $row['servico_id'] ?>" autocomplete="off">Select
+												</label>
 											</div>
                                     	</div>
                                     <?php
@@ -162,7 +170,7 @@
 				<!-- ALERT MESSAGE -->
 
 				<div class="alert alert-danger" role="alert" style="display: none">
-					Please, select your employee!
+					Por favor, seleciona seu funcioanrio!
 				</div>
 
 				<div class="text_header">
@@ -171,12 +179,12 @@
 					</span>
 				</div>
 
-				<!-- EMPLOYEES TAB -->
+				<!-- Funcionario TAB -->
 				
 				<div class="btn-group-toggle" data-toggle="buttons">
 					<div class="items_tab">
         				<?php
-        					$stmt = $conn->prepare("SELECT * FROM funcionarios");
+        					$stmt = $conn->prepare("Select * from funcionarios");
                     		$stmt->execute();
                     		$rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
@@ -185,13 +193,13 @@
                         		echo "<div class='itemListElement'>";
                             		echo "<div class = 'item_details'>";
                                 		echo "<div>";
-                                    		echo $row['primeiro_nome']." ".$row['ultimo_nome'];
+                                    		echo $row['primerio_nome']." ".$row['ultimo_nome'];
                                 		echo "</div>";
                                 		echo "<div class = 'item_select_part'>";
                                     ?>
                                     		<div class="select_item_bttn">
                                     			<label class="item_label btn btn-secondary active">
-													<input type="radio" class="radio_employee_select" name="selected_employee" value="<?php echo $row['func_id'] ?>">Select
+													<input type="radio" class="radio_employee_select" name="selected_employee" value="<?php echo $row['func_id'] ?>">Selecionar
 												</label>	
                                     		</div>
                                     <?php

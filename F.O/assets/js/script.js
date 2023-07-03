@@ -8,8 +8,8 @@ let state = {
 	},
 	total() {
 	  return this.cart.addons.reduce(
-		(acc, cur) => (acc += parseInt(cur.price.replace("$", "").trim())),
-		parseInt(this.cart.plan.price.replace("$", "").trim())
+		(acc, cur) => (acc += parseInt(cur.price.replace("€", "").trim())),
+		parseInt(this.cart.plan.price.replace("€", "").trim())
 	  );
 	},
   };

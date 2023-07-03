@@ -15,24 +15,24 @@ $mail = new PHPMailer(true); // Criação do objeto PHPMailer
 
 try {
     $mail ->isSMTP();
-    $mail ->Host = 'sandbox.smtp.mailtrap.io';
+    $mail ->Host = 'smtp.gmail.com';
     $mail ->SMTPAuth = true;
-    $mail ->Port = 2525;
-    $mail ->Username = '4fe49e09fde8ef';
-    $mail ->Password = '76c07a5408be72';
+    $mail ->Port = 587;
+    $mail ->Username = 'inforbarty@gmail.com';
+    $mail ->Password = 'uvbeaaqiddgpmtio';
 
     // Remetente
     $mail->setFrom($email, $name);
    
     // Destinatario
-    $mail->addAddress(' inforbarty@gmail.com', 'Barty Barbearia');
+    $mail->addAddress('inforbarty@gmail.com', 'Barty Barbearia');
 
     $mail->isHTML(true);
     $mail->Subject = 'Mensagem Recebida do formulario de contato';
     $mail->Body = 'Nome:'.$name. ',<br>
     Email: '.$email.'<br><br>
-Assunto: '.$assunto.'<br>
-Mensagem: '.$mensagem.'';
+    Assunto: '.$assunto.'<br>
+    Mensagem: '.$mensagem.'';
     
 
     $mail->send();

@@ -1,41 +1,41 @@
 <?php
 
+session_start();
 ob_start();
+require("../../php/connect.php");
 
-$chave = filter_input(INPUT_GET, "code", FILTER_SANITIZE_STRING);
+$chave = filter_input(INPUT_GET, "chave", FILTER_SANITIZE_STRING);
 
-if(!empty($chave)){
+if (!empty($chave)) {
     //echo "Chave: $chave <br>";
 
-    $query_usuario = "SELECT cliente_id FROM clientes WHERE code=:chave LIMIT 1";
+    $query_usuario = "SELECT cliente_id FROM clientes WHERE code=?";
     $result_usuario = $conn->prepare($query_usuario);
-    $result_usuario->bindParam(':chave', $chave, PDO::PARAM_STR);
+    $result_usuario->bind_param("s", $chave);
     $result_usuario->execute();
+    $result_usuario->store_result();
 
-    if (($result_usuario) and ($result_usuario->rowCount() != 0)) {
-        $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-        extract($row_usuario);
+    if ($result_usuario->num_rows != 0) {
+        $result_usuario->bind_result($id);
+        $result_usuario->fetch();
 
-        $query_up_usuario = "UPDATE clientes SET sits_cliente_cliente_id = 1, code=:chave WHERE cliente_id=$id";
+        $query_up_usuario = "UPDATE clientes SET estado_id = 1, code=? WHERE cliente_id=?";
         $up_usuario = $conn->prepare($query_up_usuario);
         $chave = NULL;
-        $up_usuario->bindParam(':chave', $chave, PDO::PARAM_STR);
+        $up_usuario->bind_param("si", $chave, $id);
 
-        if($up_usuario->execute()){
+        if ($up_usuario->execute()) {
             $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>E-mail confirmado.</div>";
-            header("Location: ./");
-        }else{
+            header("Location: ./?p=8");
+        } else {
             $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Erro: E-mail confirmado.</div>";
-            header("Location: ./");
+            header("Location: ./?p=8");
         }
-
-        
     } else {
         $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Erro: Endereço inválido.</div>";
-        header("Location: ./");
+        header("Location: ./?p=9");
     }
-
-}else{
+} else {
     $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Erro: Endereço inválido.</div>";
-    header("Location: ./");
+    header("Location: ./?p=9");
 }

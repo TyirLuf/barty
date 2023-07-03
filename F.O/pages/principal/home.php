@@ -9,7 +9,7 @@
             <div class="hero-single-slider-item swiper-slide">
                 <!-- Hero Slider Image -->
                 <div class="hero-slider-bg">
-                    <img src="assets/images/hero-slider/home-1/hero-slider-2.jpg" alt="">
+                    <img src="assets/images/hero-slider/home-1/banner.png" alt="">
                 </div>
                 <!-- Hero Slider Content -->
                 <div class="hero-slider-wrapper">
@@ -29,12 +29,7 @@
             </div> <!-- End Hero Single Slider Item -->
         </div>
 
-        <!-- If we need pagination -->
-        <div class="swiper-pagination active-color-golden"></div>
 
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev d-none d-lg-block"></div>
-        <div class="swiper-button-next d-none d-lg-block"></div>
     </div>
 </div>
 <!-- End Hero Slider Section-->
@@ -111,7 +106,7 @@
                                     echo '<div class="product-default-single-item product-color--golden swiper-slide">';
                                     echo '<div class="image-box">';
                                     echo '<a class="image-link">';
-                                    echo '<img src="' . $imagem . '" alt="" class="img-fluid" style="width: 450px; height: 400px;"> ';
+                                    echo '<img src="' . $imagem . '" alt="" class="img-fluid" > ';
                                     echo '</a>';
                                     echo '<div class="action-link">';
                                     echo '<div class="action-link-left">';
@@ -207,15 +202,15 @@
                 <div class="col-12">
                     <div class="instagram-box">
                         <div id="instagramFeed" class="instagram-grid clearfix">
-                            <a href="https://www.instagram.com/p/CCFOZKDDS6S/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-1.jpg" alt=""></a>
-                            <a href="https://www.instagram.com/p/CCFOYDNjWF5/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-2.jpg" alt=""></a>
-                            <a href="https://www.instagram.com/p/CCFOXH6D-zQ/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-3.jpg" alt=""></a>
-                            <a href="https://www.instagram.com/p/CCFOVcrDDOo/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-4.jpg" alt=""></a>
-                            <a href="https://www.instagram.com/p/CCFOUajjABP/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-5.jpg" alt=""></a>
-                            <a href="https://www.instagram.com/p/CCFOS2MDmjj/" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-6.jpg" alt=""></a>
+                            <a href="" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-1.jpg" alt=""></a>
+                            <a href="" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-2.jpg" alt=""></a>
+                            <a href="" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-3.jpg" alt=""></a>
+                            <a href="" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-4.jpg" alt=""></a>
+                            <a href="" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-5.jpg" alt=""></a>
+                            <a href="" target="_blank" class="instagram-image-link float-left banner-animation"><img src="assets/images/instagram/instagram-6.jpg" alt=""></a>
                         </div>
                         <div class="instagram-link">
-                            <h5><a href="https://www.instagram.com/myfurniturecom/" target="_blank" rel="noopener noreferrer">HONOTEMPLATE</a></h5>
+                            <h5><a href="" target="_blank" rel="noopener noreferrer">Barty</a></h5>
                         </div>
                     </div>
                 </div>

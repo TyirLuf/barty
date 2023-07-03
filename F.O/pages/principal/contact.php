@@ -91,7 +91,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="default-form-box mb-20">
-                                    <label for="contact-name">Name</label>
+                                    <label for="contact-name">Nome Completo</label>
                                     <input name="nome" type="text" class="contact-name" autocomplete="off">
                                 </div>
                             </div>
@@ -103,13 +103,13 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="default-form-box mb-20">
-                                    <label for="contact-subject">Subject</label>
+                                    <label for="contact-subject">Assunto</label>
                                     <input name="assunto" type="text" class="contact-subject" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="default-form-box mb-20">
-                                    <label for="contact-message">Your Message</label>
+                                    <label for="contact-message">Sua Mensagem</label>
                                     <textarea name="mensagem" class="contact-message" cols="30" rows="10"></textarea>
                                 </div>
                             </div>

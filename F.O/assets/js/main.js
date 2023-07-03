@@ -437,7 +437,35 @@
     });
     $("#amount").val("$" + $("#slider-range").slider("values", 0) +
         " - $" + $("#slider-range").slider("values", 1));
+    
 
+
+
+    $.ajax({
+        url: '../../php/valores.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          var preco_minimo = data.min;
+          var preco_maximo = data.max;
+          
+          $("#slider-range").slider({
+            range: true,
+            min: preco_minimo,
+            max: preco_maximo,
+            values: [preco_minimo, preco_maximo],
+            slide: function(event, ui) {
+              $("#amount").val("$" + ui.values[0] + " - €" + ui.values[1]);
+            }
+          });
+          $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+            " - €" + $("#slider-range").slider("values", 1));
+        },
+        error: function() {
+          console.log('Erro ao obter valores da tabela de serviços.');
+        }
+      });
+      
 
 
     /************************************************

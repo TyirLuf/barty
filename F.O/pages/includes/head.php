@@ -4,10 +4,8 @@ $op = 0;
 if (isset($_GET['p']))
     $op = $_GET['p'];
 require("./php/connect.php");
-include "./php/functions.php";
 include "./php/cliente.php";
 include "./php/controllerUserData.php";
-include "./pages/login-registro/utlizador.php";
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
