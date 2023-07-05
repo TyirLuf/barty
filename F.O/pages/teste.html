@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agende uma consulta</title>
+</head>
+<body>
+
+<h2>Agende uma consulta</h2>
+<p>Não adie para amanhã os problemas que precisam ser resolvidos hoje, especialmente quando se trata da sua saúde!</p>
+
+<form id="booking-form">
+  <label for="doctor">Selecione um médico:</label>
+  <select id="doctor" name="doctor">
+    <option value="Dr. João Silva">Dr. João Silva</option>
+    <option value="Dra. Maria Santos">Dra. Maria Santos</option>
+  </select>
+
+  <label for="date">Escolha a data e hora:</label>
+  <input type="text" id="date" name="date" placeholder="DD/MM/AAAA">
+
+  <label for="time-slot">Slots de tempo disponíveis:</label>
+  <select id="time-slot" name="time_slot">
+    <option value="9:00 - 10:00">9:00 - 10:00</option>
+    <option value="10:00 - 11:00">10:00 - 11:00</option>
+    <option value="11:00 - 12:00">11:00 - 12:00</option>
+    <option value="13:00 - 14:00">13:00 - 14:00</option>
+    <option value="14:00 - 15:00">14:00 - 15:00</option>
+    <option value="15:00 - 16:00">15:00 - 16:00</option>
+  </select>
+
+  <input type="submit" value="Agendar">
+</form>
+
+<script>
+  document.getElementById("booking-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita o envio do formulário
+
+    // Obtenha os valores selecionados pelo usuário
+    var doctor = document.getElementById("doctor").value;
+    var date = document.getElementById("date").value;
+    var timeSlot = document.getElementById("time-slot").value;
+
+    // Faça algo com os valores selecionados (exemplo: exiba-os no console)
+    console.log("Médico selecionado:", doctor);
+    console.log("Data selecionada:", date);
+    console.log("Slot de tempo selecionado:", timeSlot);
+
+    // Adicione aqui o código para enviar os dados do formulário ao servidor, se necessário
+
+    // Limpe o formulário
+    document.getElementById("booking-form").reset();
+  });
+</script>
+
+</body>
+</html>

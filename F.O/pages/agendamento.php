@@ -68,29 +68,31 @@
 
                         <!--Cliente-->
 
-                        <div class="modal-body">
-                            <center>
-                                <h1 style="color:white;">Serviços</h1>
-                                <p>Escolha os serviços desejados!</p>
-                            </center>
-                            <?php
-                            $servicosQuery = mysqli_query($conn, "SELECT nome, preco FROM servicos");
-                            if ($servicosQuery->num_rows > 0) {
-                                while ($servico = $servicosQuery->fetch_array()) {
-                                    $nome = $servico['nome'];
-                                    $preco = $servico['preco'];
-                                    echo '
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="servicos[]" value="' . $preco . '" id="' . $nome . '">
-                                                <label class="form-check-label" for="' . $nome . '">
-                                                    ' . $nome . ' = € ' . $preco . '
-                                                </label>
-                                            </div>
-                                            ';
+                        <center>
+                            <h4 style="color:white">Serviços</h4>
+                            <p style="color:white">Escolha um Serviço!</p>
+                        </center>
+                        <div class="col-md-6">
+                            <label class="form-label" style="color:white">Serviços</label>
+                            <select class="form-select" name="funcionario">
+                                <option value="aleatorio">Aleatório</option>
+                                <?php
+                                $funcionariosQuery = mysqli_query($conn, "SELECT * FROM servicos");
+                                if ($funcionariosQuery->num_rows > 0) {
+                                    while ($funcionario = $funcionariosQuery->fetch_array()) {
+                                        $servicoid = $funcionario['servico_id'];
+                                        $nome = $funcionario['nome'];
+                                        $preco = $funcionario['preco'];
+                                        $nomeCompleto = $nome . ' - $' . $preco;
+                                        $nomeVisivel = $nome;
+                                        echo '<option value="' . $servicoid . '" data-preco="' . $preco . '">' . $nomeCompleto . '</option>';
+                                    }
                                 }
-                            }
-                            ?>
+                                ?>
+                            </select>
                         </div>
+
+
 
 
                         <!--Funcionairo -->
