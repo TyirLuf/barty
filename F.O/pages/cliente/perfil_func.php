@@ -4,7 +4,7 @@ if (isset($_GET['id'])) {
 }
 
 // Consulta para buscar as informações da tabela "funcionarios"
-$sql = "SELECT imagem, primeiro_nome, ultimo_nome, descricao, habilidades, genero, experiencia FROM funcionarios WHERE func_id = $id";
+$sql = "SELECT * FROM funcionarios WHERE func_id = $id";
 $result = $conn->query($sql);
 
 // Verifica se a consulta retornou funcionários
@@ -15,9 +15,9 @@ if ($result->num_rows > 0) {
     $primeiroNome = $row["primeiro_nome"];
     $ultimoNome = $row["ultimo_nome"];
     $descricao = $row["descricao"];
-    $habilidades = $row["habilidades"];
+    $habilidades = $row["especializacao"];
     $genero = $row["genero"];
-    $experiencia = $row["experiencia"];
+    $experiencia = $row["anos_experiencia"];
 } else {
     // Caso nenhum funcionário seja encontrado
     $imagem = "caminho/para/uma/imagem/default.jpg";
@@ -64,7 +64,7 @@ if ($result->num_rows > 0) {
                         <!-- Product Variable Single Item -->
                         <div class="d-flex align-items-center ">
                             <div class="product-add-to-cart-btn">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Agendar</a>
+                                <a href="./?p=9" data-bs-toggle="modal" data-bs-target="#modalAddcart">Agendar</a>
                             </div>
                         </div>
                     </div> <!-- End Product Variable Area -->

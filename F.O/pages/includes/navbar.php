@@ -40,7 +40,8 @@ $result = $conn->query($sql);
                                                 while ($row = $result->fetch_assoc()) {
                                                     $id = $row["id"];
                                                     $nome = $row["nome"];
-                                                    echo '<li><a href="./?p=' . $id . '">' . $nome . '</a></li>';
+                                                    echo '<li><a href="./?p=17&id=' . $id . '">' . $nome . '</a></li>';
+
                                                 }
                                                 echo '<hr>';
                                             }

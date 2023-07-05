@@ -1,5 +1,5 @@
     <!-- Start Footer Section -->
-    <footer class="footer-section footer-bg">
+    <footer class="footer-section footer-bg section-top-gap-100">
         <div class="footer-wrapper">
             <!-- Start Footer Top -->
             <div class="footer-top">
@@ -7,45 +7,48 @@
                     <div class="row mb-n6">
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="0">
-                                <h5 class="title">INFORMATION</h5>
-                                <ul class="footer-nav">
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="./?p=6">Contact</a></li>
-                                    <li><a href="#">Returns</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Footer Single Item -->
-                        </div>
-                        <div class="col-lg-3 col-sm-6 mb-6">
-                            <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="200">
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"
+                                data-aos-delay="0">
                                 <h5 class="title">Endereço</h5>
                                 <ul class="footer-nav">
-                                    <li><a href="my-account.html">R. de Soares dos Reis 191, 4430-315 <br />Vila Nova de Gaia</a></li>
+                                    <li><a href="https://goo.gl/maps/113BTLpBm8dQrjti7">Av. Nuno Álvares, 4400-233 Vila Nova de Gaia</a></li>
                                 </ul>
                             </div>
                             <!-- End Footer Single Item -->
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="400">
-                                <h5 class="title">Contate-nos</h5>
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"
+                                data-aos-delay="200">
+                                <h5 class="title">Email</h5>
+                                <ul class="footer-nav">
+                                    <li><a href="my-account.html">inforbarty@gmail.com</a></li>
+                                </ul>
+                            </div>
+                            <!-- End Footer Single Item -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mb-6">
+                            <!-- Start Footer Single Item -->
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"
+                                data-aos-delay="400">
+                                <h5 class="title">Telefone</h5>
                                 <ul class="footer-nav">
                                     <li><a href="#">+351 924736082</a></li>
-                                    <li><a href="#">info@barty.com</a></li>
                                 </ul>
                             </div>
                             <!-- End Footer Single Item -->
                         </div>
                         <div class="col-lg-3 col-sm-6 mb-6">
                             <!-- Start Footer Single Item -->
-                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up" data-aos-delay="600">
-                                <h5 class="title">WORKING HOURS</h5>
+                            <div class="footer-widget-single-item footer-widget-color--golden" data-aos="fade-up"
+                                data-aos-delay="600">
+                                <h5 class="title">Hora de trabalho</h5>
                                 <div class="footer-about">
-                                    <p>Seg – Sext 09:00 – 19:00</p>
-                                    <p>WEEKEND --- Closed</p>
+                                    <address class="address">
+                                        <span>Segunda a sexta: 8:00 &rarr; 19:00</span>
+                                        <br>
+                                        <span>Sábado: 8:00 &rarr; 12:00</span>
+                                    </address>
                                 </div>
                             </div>
                             <!-- End Footer Single Item -->
@@ -61,23 +64,22 @@
                     <div class="row mb-n6">
                         <div class="col-xl-3 col-lg-4 col-md-6 mb-6">
                             <div class="footer-social" data-aos="fade-up" data-aos-delay="0">
-                                <h4 class="title">FOLLOW US</h4>
+                                <h4 class="title">Segue-nos</h4>
                                 <ul class="footer-social-link">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://www.instagram.com/barber_barty/"><i class="fa fa-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6 col-md-6 mb-6">
                             <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="200">
-                                <h4 class="title">DON'T MISS OUT ON THE LATEST</h4>
+                                <h4 class="title">Mantêm-tem atualizado</h4>
                                 <div class="form-newsletter">
                                     <form action="#" method="post">
                                         <div class="form-fild-newsletter-single-item input-color--golden">
-                                            <input type="email" placeholder="Your email address..." >
-                                            <button type="submit">SUBSCRIBE!</button>
+                                            <input type="email" placeholder="Indroduza o seu email..." required>
+                                            <button type="submit">Seja Membro!</button>
                                         </div>
                                     </form>
                                 </div>
@@ -91,13 +93,17 @@
             <!-- Start Footer Bottom -->
             <div class="footer-bottom">
                 <div class="container">
-                    <div class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
+                    <div
+                        class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
                         <div class="col-auto mb-6">
                             <div class="footer-copyright">
-                                <p class="copyright-text"> <a href="index.html"></a><a href="https://therankme.com/" target="_blank"></a> </p>
-                                <p class="copyright-text"><a>Todos os direitos reservados a Gucivani Emanuel &copy; 2023</a></p>
+                                <p class="copyright-text">&copy; 2023 <a href="index.html">Barty Barber</a>. Made with <i
+                                        class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/"
+                                        target="_blank">Jucivani Emanuel</a> </p>
+
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -105,6 +111,7 @@
         </div>
     </footer>
     <!-- End Footer Section -->
+
 
 
     <!-- material-scrolltop button -->
