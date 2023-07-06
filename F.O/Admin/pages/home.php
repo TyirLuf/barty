@@ -267,7 +267,7 @@
           <div class="card-header">
             <div class="row align-items-center">
               <div class="col-sm-6">
-                <div class="page-title">All Students</div>
+                <div class="page-title">Todos Funcionários</div>
               </div>
               <div class="col-sm-6 text-sm-right">
                 <div class="mt-sm-0 mt-2">
@@ -277,189 +277,86 @@
                   <button class="btn btn-outline-danger mr-2">
                     <img src="assets/img/pdf.png" alt="" height="18" /><span class="ml-2">PDF</span>
                   </button>
-                  <button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-h"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table custom-table">
-                <thead class="thead-light">
-                  <tr>
-                    <th>Name</th>
-                    <th>Student ID</th>
-                    <th>Class</th>
-                    <th>Section</th>
-                    <th>Mobile</th>
-                    <th>Date of Birth</th>
-                    <th class="text-right">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
+            <table class="table custom-table">
+    <thead class="thead-light">
+        <tr>
+            <th>Nome</th>
+            <th>Especialização</th>
+            <th>Experiência</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Data de Nascimento</th>
+            <th class="text-right">Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        // Consulta SQL para obter todos os funcionários
+        $sql = "SELECT * FROM funcionarios ORDER BY primeiro_nome ASC";
+        $result = $conn->query($sql);
+
+        // Exibir os funcionários
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $id = $row['func_id'];
+                $email = $row['email'];
+                $imagem = $row["imagem"];
+                $primeiro_nome = $row["primeiro_nome"];
+                $ultimo_nome = $row["ultimo_nome"];
+                $habilidades = $row["especializacao"];
+                $datanas = $row["data_nascimento"];
+                $exp = $row["anos_experiencia"];
+                $telefone = $row["telefone"];
+        ?>
+                <tr>
                     <td>
-                      <h2>
-                        <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-1.jpg" alt="" /></a><a href="profile.html">Parker <span></span></a>
-                      </h2>
+                        <a href="profile.html" class="avatar"><?php echo substr($primeiro_nome, 0, 1); ?></a>
+                        <h2><a href="profile.html"><?php echo $primeiro_nome . ' ' . $ultimo_nome; ?></a></h2>
                     </td>
-                    <td>ST-0d001</td>
-                    <td>1</td>
-                    <td>A</td>
-                    <td>973-584-58700</td>
-                    <td>20/1/2021</td>
+                    <td class="text-center"><?php echo $habilidades; ?></td>
+
+                    <td><?php echo !empty($exp) ? $exp : "[Campo Vazio]"; ?></td>
+                    <td><a href="#" class="__cf_email__" data-cfemail="5a373339323b3f362c382f2e2e3b28291a3f223b372a363f74393537"><?php echo $email; ?></a></td>
+                    <td><?php echo !empty($telefone) ? $telefone : "[Sem telefone registrado]"; ?></td>
+                    <td><?php echo $datanas; ?></td>
                     <td class="text-right">
-                      <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                        <i class="far fa-edit"></i>
-                      </a>
-                      <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                        <i class="far fa-trash-alt"></i>
-                      </button>
+                        <a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
                     </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h2>
-                        <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-2.jpg" alt="" /></a><a href="profile.html">Smith <span></span></a>
-                      </h2>
-                    </td>
-                    <td>ST-0d002</td>
-                    <td>2</td>
-                    <td>B</td>
-                    <td>973-584-58700</td>
-                    <td>20/1/2021</td>
-                    <td class="text-right">
-                      <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                        <i class="far fa-edit"></i>
-                      </a>
-                      <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h2>
-                        <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-3.jpg" alt="" /></a><a href="profile.html">Hensley<span></span></a>
-                      </h2>
-                    </td>
-                    <td>ST-0d003</td>
-                    <td>1</td>
-                    <td>A</td>
-                    <td>973-584-58700</td>
-                    <td>20/1/2021</td>
-                    <td class="text-right">
-                      <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                        <i class="far fa-edit"></i>
-                      </a>
-                      <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h2>
-                        <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-4.jpg" alt="" /></a><a href="profile.html">Friesen<span></span></a>
-                      </h2>
-                    </td>
-                    <td>ST-0d004</td>
-                    <td>1</td>
-                    <td>A</td>
-                    <td>973-584-58700</td>
-                    <td>20/1/2021</td>
-                    <td class="text-right">
-                      <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                        <i class="far fa-edit"></i>
-                      </a>
-                      <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h2>
-                        <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-5.jpg" alt="" /></a><a href="profile.html">Jackson<span></span></a>
-                      </h2>
-                    </td>
-                    <td>ST-0d005</td>
-                    <td>1</td>
-                    <td>A</td>
-                    <td>973-584-58700</td>
-                    <td>20/1/2021</td>
-                    <td class="text-right">
-                      <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                        <i class="far fa-edit"></i>
-                      </a>
-                      <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h2>
-                        <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-6.jpg" alt="" /></a><a href="profile.html">Mason<span></span></a>
-                      </h2>
-                    </td>
-                    <td>ST-0d006</td>
-                    <td>1</td>
-                    <td>A</td>
-                    <td>973-584-58700</td>
-                    <td>20/1/2021</td>
-                    <td class="text-right">
-                      <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                        <i class="far fa-edit"></i>
-                      </a>
-                      <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h2>
-                        <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-7.jpg" alt="" /></a><a href="profile.html">Garrett <span></span></a>
-                      </h2>
-                    </td>
-                    <td>ST-0d007</td>
-                    <td>1</td>
-                    <td>A</td>
-                    <td>973-584-58700</td>
-                    <td>20/1/2021</td>
-                    <td class="text-right">
-                      <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                        <i class="far fa-edit"></i>
-                      </a>
-                      <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                </tr>
+        <?php
+            }
+        } else {
+            echo "Nenhum funcionário encontrado.";
+        }
+        ?>
+    </tbody>
+</table>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
     <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
             <div class="row align-items-center">
               <div class="col-sm-6">
-                <div class="page-title">New Students</div>
+                <div class="page-title">Clientes</div>
               </div>
               <div class="col-sm-6 text-sm-right">
                 <div class="mt-sm-0 mt-2">
@@ -469,16 +366,7 @@
                   <button class="btn btn-outline-danger mr-2">
                     <img src="assets/img/pdf.png" alt="" height="18" /><span class="ml-2">PDF</span>
                   </button>
-                  <button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-h"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
+                
                 </div>
               </div>
             </div>
@@ -491,165 +379,62 @@
                     <thead class="thead-light">
                       <tr>
                         <th>Name</th>
-                        <th>Student ID</th>
-                        <th>Parent Name</th>
-                        <th>Mobile</th>
-                        <th>Address</th>
-                        <th>Date Of Admition</th>
-                        <th>Fees Receipt</th>
-                        <th class="text-right">Action</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Data de Nascimento</th>
+                        <th>Data de Cadastro</th>
+                        <th>Estado</th>
+                        <th class="text-right">Ação</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <h2>
-                            <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-1.jpg" alt="" /></a><a href="profile.html">Parker <span></span></a>
-                          </h2>
-                        </td>
-                        <td>ST-0d001</td>
-                        <td>Mr. Johnson</td>
-                        <td>973-584-58700</td>
-                        <td>9946 Baker Rd. Marysville,</td>
-                        <td>20/1/2021</td>
-                        <td><img src="assets/img/pdf.png" alt="" /></td>
-                        <td class="text-right">
-                          <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
+        <?php
+        // Consulta SQL para obter todos os funcionários
+        $sql = "SELECT * FROM clientes ORDER BY primeiro_nome ASC";
+        $result = $conn->query($sql);
+
+        // Exibir os funcionários
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $id = $row['cliente_id'];
+                $username = $row['username'];
+                $email = $row['email'];
+                $imagem = $row["imagem"];
+                $primeiro_nome = $row["primeiro_nome"];
+                $ultimo_nome = $row["ultimo_nome"];
+                $estado = $row["estado"];
+                $datanas = $row["data_nascimento"];
+                $dt_cd = $row["data_cadastro"];
+                $telefone = $row["telefone"];
+        ?>
+                <tr>
+                    <td>
+                        <a href="profile.html" class="avatar"><?php echo substr($primeiro_nome, 0, 1); ?></a>
+                        <h2><a href="profile.html"><?php echo $primeiro_nome . ' ' . $ultimo_nome; ?></a></h2>
+                    </td>
+                    <td class="text-center"><?php echo $username; ?></td>
+
+                    <td><?php echo !empty($dt_cd) ? $dt_cd : "[Campo Vazio]"; ?></td>
+                    <td><a href="#" class="__cf_email__" data-cfemail="5a373339323b3f362c382f2e2e3b28291a3f223b372a363f74393537"><?php echo $email; ?></a></td>
+                    <td><?php echo !empty($telefone) ? $telefone : "[Sem telefone registrado]"; ?></td>
+                    <td><?php echo $datanas; ?></td>
+                    <td class="text-right">
+                        <a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
                             <i class="far fa-edit"></i>
-                          </a>
-                          <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+                        </a>
+                        <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
                             <i class="far fa-trash-alt"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <h2>
-                            <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-2.jpg" alt="" /></a><a href="profile.html">Smith <span></span></a>
-                          </h2>
-                        </td>
-                        <td>ST-0d002</td>
-                        <td>Mr. Luke Idaman</td>
-                        <td>973-584-58700</td>
-                        <td>193 S. Harrison Drive</td>
-                        <td>20/1/2021</td>
-                        <td><img src="assets/img/pdf.png" alt="" /></td>
-                        <td class="text-right">
-                          <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                            <i class="far fa-edit"></i>
-                          </a>
-                          <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                            <i class="far fa-trash-alt"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <h2>
-                            <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-3.jpg" alt="" /></a><a href="profile.html">Hensley<span></span></a>
-                          </h2>
-                        </td>
-                        <td>ST-0d003</td>
-                        <td>Mr. Kevin H</td>
-                        <td>973-584-58700</td>
-                        <td>8949 Golf St. Palm Coast</td>
-                        <td>20/1/2021</td>
-                        <td><img src="assets/img/pdf.png" alt="" /></td>
-                        <td class="text-right">
-                          <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                            <i class="far fa-edit"></i>
-                          </a>
-                          <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                            <i class="far fa-trash-alt"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <h2>
-                            <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-4.jpg" alt="" /></a><a href="profile.html">Friesen<span></span></a>
-                          </h2>
-                        </td>
-                        <td>ST-0d004</td>
-                        <td>Mr. Randy O</td>
-                        <td>973-584-58700</td>
-                        <td>23 Ohio Court Alexandria</td>
-                        <td>20/1/2021</td>
-                        <td><img src="assets/img/pdf.png" alt="" /></td>
-                        <td class="text-right">
-                          <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                            <i class="far fa-edit"></i>
-                          </a>
-                          <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                            <i class="far fa-trash-alt"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <h2>
-                            <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-5.jpg" alt="" /></a><a href="profile.html">Jackson<span></span></a>
-                          </h2>
-                        </td>
-                        <td>ST-0d005</td>
-                        <td>Mr. Steven</td>
-                        <td>973-584-58700</td>
-                        <td>338 North Cleveland Rd</td>
-                        <td>20/1/2021</td>
-                        <td><img src="assets/img/pdf.png" alt="" /></td>
-                        <td class="text-right">
-                          <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                            <i class="far fa-edit"></i>
-                          </a>
-                          <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                            <i class="far fa-trash-alt"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <h2>
-                            <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-6.jpg" alt="" /></a><a href="profile.html">Mason<span></span></a>
-                          </h2>
-                        </td>
-                        <td>ST-0d006</td>
-                        <td>Mr. Ervin</td>
-                        <td>973-584-58700</td>
-                        <td>7909 W. Sunnyslope St.</td>
-                        <td>20/1/2021</td>
-                        <td><img src="assets/img/pdf.png" alt="" /></td>
-                        <td class="text-right">
-                          <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                            <i class="far fa-edit"></i>
-                          </a>
-                          <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                            <i class="far fa-trash-alt"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <h2>
-                            <a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-7.jpg" alt="" /></a>
-                            <a href="profile.html">Garrett <span></span></a>
-                          </h2>
-                        </td>
-                        <td>ST-0d007</td>
-                        <td>Mr. Marquz</td>
-                        <td>973-584-58700</td>
-                        <td>7361 Dunbar Street</td>
-                        <td>20/1/2021</td>
-                        <td><img src="assets/img/pdf.png" alt="" /></td>
-                        <td class="text-right">
-                          <a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-                            <i class="far fa-edit"></i>
-                          </a>
-                          <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-                            <i class="far fa-trash-alt"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
+                        </button>
+                    </td>
+                </tr>
+        <?php
+            }
+        } else {
+            echo "Nenhum funcionário encontrado.";
+        }
+        ?>
+    </tbody>
                   </table>
                 </div>
               </div>
