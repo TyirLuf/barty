@@ -14855,7 +14855,7 @@ table {
 }
 .form_group input[type="password"],
 .form_group input[type="text"] {
-  width: 350px !important;
+  width: 150px !important;
 }
 .form_group .btn {
   margin-right: 20px;
@@ -14962,6 +14962,19 @@ table {
   margin-bottom: 30px;
 }
 .account_form form {
+  border: 1px solid #ededed;
+  padding: 23px 20px 29px;
+  border-radius: 5px;
+}
+.registro_form .h3,
+.registro_form h3 {
+  font-size: 28px;
+  text-transform: capitalize;
+  font-weight: 500;
+  line-height: 22px;
+  margin-bottom: 30px;
+}
+.registro_form form {
   border: 1px solid #ededed;
   padding: 23px 20px 29px;
   border-radius: 5px;

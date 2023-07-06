@@ -18,7 +18,7 @@ include './pages/includes/navbar.php';
         9 => "./pages/cliente/registro.php",
         10 => "./pages/cliente/perfil_func.php",
         15 => "./pages/principal/enviarmsgm.php",
-        16 => "./pages/verificar_code.php",
+        16 => "./pages/login/verificar_code.php",
         17 => "./pages/cliente/tipo_servico.php",
         20 => "./pages/login/conteudo.php",
         21 => "./pages/login/conteudo_login.php",

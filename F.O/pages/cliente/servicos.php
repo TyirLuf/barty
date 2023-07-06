@@ -23,32 +23,24 @@ if (isset($_GET['pagina'])) {
 $indiceInicio = ($paginaAtual - 1) * $resultadosPorPagina;
 $indiceFim = $indiceInicio + $resultadosPorPagina - 1;
 
-// Consulta SQL para obter os serviços com base na página atual
-$sqlServicos = "SELECT * FROM servicos LIMIT $indiceInicio, $resultadosPorPagina";
-$resultServicos = $conn->query($sqlServicos);
 // Obtém o parâmetro de ordenação da URL
 $ordenacao = isset($_GET['sort']) ? $_GET['sort'] : '';
 
 // Consulta SQL para obter os serviços com base na ordenação
 $sqlServicos = "SELECT * FROM servicos";
 
-if ($ordenacao == 'rating') {
-    $sqlServicos .= " ORDER BY rating_avg DESC";
-} elseif ($ordenacao == 'popularity') {
-    $sqlServicos .= " ORDER BY popularity DESC";
-} elseif ($ordenacao == 'newness') {
-    $sqlServicos .= " ORDER BY created_at DESC";
+if ($ordenacao == 'name_z') {
+    $sqlServicos .= " ORDER BY nome DESC";
 } elseif ($ordenacao == 'price_low_high') {
     $sqlServicos .= " ORDER BY preco ASC";
 } elseif ($ordenacao == 'price_high_low') {
     $sqlServicos .= " ORDER BY preco DESC";
-} elseif ($ordenacao == 'name_z') {
-    $sqlServicos .= " ORDER BY nome DESC";
 } else {
     $sqlServicos .= " ORDER BY nome ASC";
 }
 
 $resultServicos = $conn->query($sqlServicos);
+
 ?>
 
 
@@ -83,7 +75,7 @@ $resultServicos = $conn->query($sqlServicos);
                                 }
 
                                 // Feche a conexão com o banco de dados após usar
-
+                                
                                 ?>
                             </ul>
                         </div>
@@ -109,17 +101,24 @@ $resultServicos = $conn->query($sqlServicos);
                     <div class="container">
                         <div class="row">
                             <!-- Start Sort Wrapper Box -->
-                            <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column" data-aos="fade-up" data-aos-delay="0">
+                            <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column"
+                                data-aos="fade-up" data-aos-delay="0">
                                 <!-- Start Sort tab Button -->
                                 <div class="sort-tablist d-flex align-items-center">
                                     <ul class="tablist nav sort-tab-btn">
-                                        <li><a class="nav-link" data-bs-toggle="tab" href="#layout-3-grid"><img src="assets/images/icons/bkg_grid.png" alt=""></a></li>
-                                        <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-list"><img src="assets/images/icons/bkg_list.png" alt=""></a></li>
+                                        <li><a class="nav-link" data-bs-toggle="tab" href="#layout-3-grid"><img
+                                                    src="assets/images/icons/bkg_grid.png" alt=""></a></li>
+                                        <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-list"><img
+                                                    src="assets/images/icons/bkg_list.png" alt=""></a></li>
                                     </ul>
 
                                     <!-- Start Page Amount -->
                                     <div class="page-amount ml-2">
-                                        <span>Mostrar <?php echo $indiceInicio + 1; ?>-<?php echo min($indiceFim + 1, $totalServicos); ?> de <?php echo $totalServicos; ?> resultados</span>
+                                        <span>Mostrar
+                                            <?php echo $indiceInicio + 1; ?>-
+                                            <?php echo min($indiceFim + 1, $totalServicos); ?> de
+                                            <?php echo $totalServicos; ?> resultados
+                                        </span>
                                     </div> <!-- End Page Amount -->
                                 </div> <!-- End Sort tab Button -->
 
@@ -128,15 +127,20 @@ $resultServicos = $conn->query($sqlServicos);
                                     <label class="mr-2">Ordenar:</label>
                                     <form action="#">
                                         <fieldset>
-                                            <select name="speed" id="speed">
-                                                <option>Ordenar por Nome: A</option>
-                                                <option>Ordenar por Nome: Z</option>
-                                                <option>Ordenar por Preço:baixo para alto</option>
-                                                <option>Ordenar por Preço: alto para baixo</option>
+                                            <select name="sort" id="sort" onchange="this.form.submit()">
+                                                <option value="name_a" <?php if ($ordenacao == 'name_a')
+                                                    echo 'selected'; ?>>Ordenar por Nome: A</option>
+                                                <option value="name_z" <?php if ($ordenacao == 'name_z')
+                                                    echo 'selected'; ?>>Ordenar por Nome: Z</option>
+                                                <option value="price_low_high" <?php if ($ordenacao == 'price_low_high')
+                                                    echo 'selected'; ?>>Ordenar por Preço: baixo para alto</option>
+                                                <option value="price_high_low" <?php if ($ordenacao == 'price_high_low')
+                                                    echo 'selected'; ?>>Ordenar por Preço: alto para baixo</option>
                                             </select>
                                         </fieldset>
                                     </form>
-                                </div> <!-- End Sort Select Option -->
+                                </div>
+                                <!-- End Sort Select Option -->
                             </div> <!-- Start Sort Wrapper Box -->
                         </div>
                     </div>
@@ -155,7 +159,7 @@ $resultServicos = $conn->query($sqlServicos);
                                         <div class="row">
                                             <?php
                                             // Faça a conexão com o banco de dados antes de executar esta parte do código
-
+                                            
                                             // Consulta SQL para buscar os dados da tabela servicos
                                             $sql = "SELECT * FROM servicos";
                                             $resultado = mysqli_query($conn, $sql);
@@ -235,12 +239,19 @@ $resultServicos = $conn->query($sqlServicos);
                                             <?php foreach ($dadosServicos as $servico) { ?>
                                                 <div class="col-12">
                                                     <!-- Start Product Defautlt Single -->
-                                                    <div class="product-list-single product-color--golden" data-aos="fade-up" data-aos-delay="0">
-                                                        <a href="product-details-default.html" class="product-list-img-link">
-                                                            <img class="img-fluid" src="<?php echo $servico['link_img']; ?>" alt="" style="width: 295px; height: 250px; margin-right: 20px;">
+                                                    <div class="product-list-single product-color--golden"
+                                                        data-aos="fade-up" data-aos-delay="0">
+                                                        <a href="product-details-default.html"
+                                                            class="product-list-img-link">
+                                                            <img class="img-fluid" src="<?php echo $servico['link_img']; ?>"
+                                                                alt=""
+                                                                style="width: 295px; height: 250px; margin-right: 20px;">
                                                         </a>
                                                         <div class="product-list-content">
-                                                            <h5 class="product-list-link"><a href="product-details-default.html"><?php echo $servico['nome']; ?></a></h5>
+                                                            <h5 class="product-list-link"><a
+                                                                    href="product-details-default.html">
+                                                                    <?php echo $servico['nome']; ?>
+                                                                </a></h5>
                                                             <ul class="review-star">
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
@@ -248,11 +259,19 @@ $resultServicos = $conn->query($sqlServicos);
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                                 <li class="empty"><i class="ion-android-star"></i></li>
                                                             </ul>
-                                                            <span class="product-list-price"><?php echo $servico['preco']; ?></span>
-                                                            <p><?php echo $servico['descricao']; ?></p>
+                                                            <span class="product-list-price">
+                                                                <?php echo $servico['preco']; ?>
+                                                            </span>
+                                                            <p>
+                                                                <?php echo $servico['descricao']; ?>
+                                                            </p>
                                                             <div class="product-action-icon-link-list">
-                                                                <a href="./?p=1" data-bs-toggle="modal" class="btn btn-lg btn-black-default-hover">Fazer Agendamento</a>
-                                                                <a href="wishlist.html" class="btn btn-lg btn-black-default-hover"><i class="icon-heart"></i></a>
+                                                                <a href="./?p=1" data-bs-toggle="modal"
+                                                                    class="btn btn-lg btn-black-default-hover">Fazer
+                                                                    Agendamento</a>
+                                                                <a href="wishlist.html"
+                                                                    class="btn btn-lg btn-black-default-hover"><i
+                                                                        class="icon-heart"></i></a>
                                                             </div>
                                                         </div>
                                                     </div> <!-- End Product Defautlt Single -->

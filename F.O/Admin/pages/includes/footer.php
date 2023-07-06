@@ -226,13 +226,16 @@
 
 
 
+</div>
+
+
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 
 <script src="assets/js/jquery.slimscroll.js"></script>
+ 
 
-<script src="assets/js/select2.min.js"></script>
 <script src="assets/js/moment.min.js"></script>
 
 <script src="assets/js/fullcalendar.min.js"></script>
@@ -244,21 +247,18 @@
 <script src="assets/js/chart-data.js"></script>
 
 <script src="assets/js/app.js"></script>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
 
 
 
-<script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
-<script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+<script src="assets/js/jquery.slimscroll.js"></script>
 
 <script src="assets/js/select2.min.js"></script>
 
 <script src="assets/js/moment.min.js"></script>
 <script src="assets/plugins/datetimepicker/js/tempusdominus-bootstrap-4.min.js"></script>
 
-<script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
-<script src="assets/plugins/fullcalendar/locale-all.js"></script>
-<script src="assets/plugins/fullcalendar/jquery.fullcalendar.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
-
 </html>
