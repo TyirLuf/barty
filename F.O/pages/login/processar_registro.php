@@ -12,6 +12,8 @@
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+    if (empty($dados['genero'])) {
+    } 
     if (empty($dados['pri_nome'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo primeiro nome!</div>"];
     } 
@@ -49,9 +51,9 @@
                 $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: As palavras-passe não correspondem!</div>"];
             }
          else {
-            $query_usuario = "INSERT INTO clientes (primeiro_nome,ultimo_nome, email, password,data_nascimento,nif,username,code) VALUES (?, ?, ?, ?,?,?,?,?)";
+            $query_usuario = "INSERT INTO clientes (primeiro_nome,ultimo_nome, email, password,data_nascimento,nif,username,genero,code) VALUES (?, ?, ?, ?,?,?,?,?, ?)";
             $cad_usuario = $conn->prepare($query_usuario);
-            $cad_usuario->bind_param('sssss', $dados['pri_nome'],  $dados['ult_nome'], $dados['username'], $dados['email'],$dados['nif'], $senha_cript, $chave);
+            $cad_usuario->bind_param('ssssss', $dados['genero'], $dados['pri_nome'],  $dados['ult_nome'], $dados['username'], $dados['email'],$dados['nif'], $senha_cript, $chave);
         
             $senha_cript = password_hash($dados['pass'], PASSWORD_DEFAULT);
             $chave = password_hash($dados['email'] . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);

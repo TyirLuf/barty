@@ -264,8 +264,8 @@ $result = $conn->query($sql);
         <div class="offcanvas-user">
             <h4 class="offcanvas-title">'. $firstName .' '. $lastName .'</h4>
             <ul class="offcanvas-cart-action-button">
-                <li><a href="perfil.html" class="btn btn-block btn-golden">Ver Perfil</a></li>
-                <li><a href="notificacoes.html" class="btn btn-block btn-golden mt-5">Notificações</a></li>
+                <li><a href="./?p=7" class="btn btn-block btn-golden">Ver Perfil</a></li>
+                <li><a href="./?p=18" class="btn btn-block btn-golden mt-5">Histórico</a></li>
                 <li><a href="./pages/login/logout.php" class="btn btn-block btn-golden mt-5">Logout</a></li>
             </ul>
         </div>

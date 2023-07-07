@@ -25,7 +25,7 @@
                             <span>Remember me</span>
                         </label>
                         <a href="#">Lost your password?</a>
-                        <a href="#">Registrar</a>
+                        <a href="./?p=9">Registrar</a>
                     </div>
                 </form>
             </div>

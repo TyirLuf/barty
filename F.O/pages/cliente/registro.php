@@ -5,7 +5,11 @@
             <h3>Register</h3>
             <form id="cad-usuario-form" action="./pages/login/processar_registro.php" method="POST">
                 <span id="msgAlertErroCad"></span>
-
+                <div class="input-radio">
+                    <span class="custom-radio"><input type="radio" value="1" name="genero"> Masculino.</span>
+                    <span class="custom-radio"><input type="radio" value="1" name="genero"> Femenino.</span>
+                </div>
+                <br>
                 <div class="form-group">
                     <div class="default-form-box">
                         <label>Primeiro Nome<span>*</span></label>
@@ -51,8 +55,7 @@
                 </div>
 
                 <div class="login_submit">
-                    <button class="btn btn-md btn-black-default-hover" type="submit" id="cad-usuario-btn"
-                        name="entrar">Register</button>
+                    <button class="btn btn-md btn-black-default-hover" type="submit" id="cad-usuario-btn" name="entrar">Register</button>
                 </div>
             </form>
         </div>
