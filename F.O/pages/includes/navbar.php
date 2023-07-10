@@ -50,9 +50,7 @@ $result = $conn->query($sql);
                                         </ul>
                                     </li>
 
-                                    <li>
-                                        <a href="./?p=">Blog</a>
-                                    </li>
+                                  
                                     <li>
                                         <a href="./?p=5">Sobre Nós</a>
                                     </li>
@@ -70,7 +68,7 @@ $result = $conn->query($sql);
                         <ul class="header-action-link action-color--black action-hover-color--golden">
 
                             <li>
-                                <a href="./?p=1">
+                                <a href="./?p=6">
                                     <i class="icon-calendar"></i>
                                 </a>
                             </li>
@@ -116,12 +114,12 @@ $result = $conn->query($sql);
                 <div class="mobile-right-side">
                     <ul class="header-action-link action-color--black action-hover-color--golden">
                         <li>
-                            <a href="#">
+                            <a href="./?p=1">
                                 <i class="icon-calendar"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#offcanvas-user" class="offcanvas-toggle">
+                        <a href="#offcanvas-user" class="offcanvas-toggle">
                                 <i class="icon-user"></i>
                             </a>
                         </li>
@@ -215,7 +213,7 @@ $result = $conn->query($sql);
                                             <li><a href="./?p=2">Todos</a></li>
                                         </ul>
                     </li>
-                    <li><a href="./?p=5">Blog</a></li>
+                    
                     <li><a href="./?p=5">Sobre Nós</a></li>
                     <li><a href="./?p=6">Contate-nos</a></li>
                 </ul>
