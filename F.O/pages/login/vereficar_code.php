@@ -6,18 +6,17 @@
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
     // Acessar o IF quando o usuário clicar no botão acessar do formulário
-    if (!empty($dados['ValCodigo'])) {
+    if (isset($dados['validar'])) {
         // Recuperar os dados do usuário no banco de dados
         $query_usuario = "SELECT cliente_id,primeiro_nome,ultimo_nome, email, password,data_nascimento,nif,username
-                    FROM clientes
-                    WHERE cliente_id = ?
-                    AND username = ?
-                    AND code = ?
-                    LIMIT 1";
+                    FROM clientes 
+                    Where email = ?
+                    AND code = ? 
+                    and estado_id = 3 ";
 
         // Preparar a QUERY
         $result_usuario = $conn->prepare($query_usuario);
-        $result_usuario->bind_param('iss', $_SESSION['cliente_id'], $_SESSION['username'], $dados['code']);
+        $result_usuario->bind_param('si', $dados['email'], $dados['codigo']);
 
         // Executar a QUERY
         $result_usuario->execute();
@@ -29,26 +28,18 @@
             $row_usuario = $result_usuario->fetch_assoc();
 
             // QUERY para salvar no banco de dados o código e a data gerada
-            $query_up_usuario = "UPDATE usuarios SET
-                    code= NULL,
-                    data_code = NULL
-                    WHERE id = ?
-                    LIMIT 1";
+            $query_up_usuario = "UPDATE clientes SET estado_id = 1 WHERE cliente_id = ? ";
 
             // Preparar a QUERY
             $result_up_usuario = $conn->prepare($query_up_usuario);
-            $result_up_usuario->bind_param('i', $_SESSION['cliente_id']);
+            $result_up_usuario->bind_param('i', $row_usuario['cliente_id']);
 
             // Executar a QUERY
             $result_up_usuario->execute();
-
-            // Salvar os dados do usuário na sessão
-            $_SESSION['primeiro_nome'] = $row_usuario['primeiro_nome'];
-            $_SESSION['ultimo_nome'] = $row_usuario['ultimo_nome'];
-            $_SESSION['code'] = true;            
+          
 
             // Redirecionar o usuário
-            header('Location: ./');
+            header('Location: ./?p=8');
             exit();
         } else {
             $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Código inválido!</p>";
@@ -63,11 +54,23 @@
     ?>
 
     <!-- Inicio do formulário validar código -->
-    <form method="POST" action="">
-        <label>Código: </label>
-        <input type="text" name="codigo_autenticacao" placeholder="Digite o código"><br><br>
+    <form id="cad-usuario-form" action="#" method="POST">
+                <span id="msgAlertErroCad"></span>
+                <br>
+                <div class="form-group">
+                    <div class="default-form-box">
+                        <label>Email<span>*</span></label>
+                        <input type="text" name="email" required>
+                    </div>
+                    <div class="default-form-box">
+                        <label>Código de Ativação<span>*</span></label>
+                        <input type="text" name="codigo" required>
+                    </div>
+                </div>
 
-        <input type="submit" name="ValCodigo" value="Validar"><br><br>
+        <div class="login_submit">
+                    <button class="btn btn-md btn-black-default-hover" type="submit" name="validar">Validar</button>
+                </div>
 
     </form><br>
     <!-- Fim do formulário validar código -->

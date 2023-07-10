@@ -28,7 +28,10 @@ $indiceFim = $indiceInicio + $resultadosPorPagina - 1;
 $ordenacao = isset($_GET['sort']) ? $_GET['sort'] : '';
 
 // Consulta SQL para obter os serviços com base no tipo de serviço selecionado e na ordenação
-$sqlServicos = "SELECT * FROM servicos WHERE tipo = '$idTipoServico'";
+if($idTipoServico=="")
+    $sqlServicos = "SELECT * FROM servicos ";
+else
+    $sqlServicos = "SELECT * FROM servicos WHERE tipo = '$idTipoServico'";
 
 if ($ordenacao == 'name_z') {
     $sqlServicos .= " ORDER BY nome DESC";
@@ -39,8 +42,6 @@ if ($ordenacao == 'name_z') {
 } else {
     $sqlServicos .= " ORDER BY nome ASC";
 }
-
-$resultServicos = $conn->query($sqlServicos);
 
 ?>
 
@@ -130,6 +131,7 @@ $resultServicos = $conn->query($sqlServicos);
                                     <form action="./" method="GET">
                                         <fieldset>
                                             <input type="text" name="p" value="2" hidden>
+                                            <input type="text" name="id" value="<?php echo $idTipoServico; ?>" hidden>
                                             <select name="sort" id="sort" onchange="this.form.submit()">
                                                 <option value="name_a" <?php if ($ordenacao == 'name_a')
                                                     echo 'selected'; ?>>Ordenar por Nome: A</option>
@@ -164,8 +166,7 @@ $resultServicos = $conn->query($sqlServicos);
                                             // Faça a conexão com o banco de dados antes de executar esta parte do código
                                             
                                             // Consulta SQL para buscar os dados da tabela servicos
-                                            $sql = "SELECT * FROM servicos";
-                                            $resultado = mysqli_query($conn, $sql);
+                                            $resultado = mysqli_query($conn, $sqlServicos);
 
                                             if (mysqli_num_rows($resultado) > 0) {
                                                 while ($row = mysqli_fetch_assoc($resultado)) {
@@ -219,11 +220,8 @@ $resultServicos = $conn->query($sqlServicos);
                                     <!-- Start List View Product -->
                                     <?php
 
-                                    // Query para obter os dados dos serviços
-                                    $sql = "SELECT nome, link_img, preco, descricao FROM servicos";
-
                                     // Executa a query
-                                    $resultado = mysqli_query($conn, $sql);
+                                    $resultado = mysqli_query($conn, $sqlServicos);
 
                                     // Verifica se a query foi executada com sucesso
                                     if ($resultado) {

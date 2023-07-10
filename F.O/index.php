@@ -23,7 +23,7 @@ include './pages/includes/navbar.php';
         18 => "./pages/historico.php",
         20 => "./pages/login/conteudo.php",
         21 => "./pages/login/conteudo_login.php",
-        22 => "./pages/login/confirmar-email.php",
+        22 => "./pages/login/vereficar_code.php",
         23 => "./pages/login/processar_registro.php",
     ];
     if (isset($pages[$op])) {

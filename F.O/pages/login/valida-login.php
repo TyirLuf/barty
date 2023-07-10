@@ -20,9 +20,23 @@ if (isset($_POST['entrar'])) {
         $row = mysqli_num_rows($result);
 
         if ($row == 1) {
-            $_SESSION['user'] = $dadoscliente;
-            header("Location: ../../");
-            exit();
+
+                if ($dadoscliente['estado_id']==1){
+
+                    $_SESSION['user'] = $dadoscliente;
+                    header("Location: ../../");
+                    exit();
+
+                }
+            else echo 'error login';
+
+
+
+
+
+
+
+
         } else {
             $query = " SELECT * FROM funcionarios WHERE email = '$email' and senha = '$password' ";
             $result = mysqli_query($conn, $query);

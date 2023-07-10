@@ -45,6 +45,11 @@
             if ($dados['pass'] !== $dados['confir_pass']) {
                 $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: As palavras-passe não correspondem!</div>"];
             } else {
+
+
+                $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+                $chave = $verification_code;
+
                 $query_usuario = "INSERT INTO clientes (primeiro_nome,ultimo_nome, email, password,data_nascimento,nif,username,genero,code) VALUES (?, ?, ?, ?,?,?,?,?, ?)";
                 $cad_usuario = $conn->prepare($query_usuario);
                 $cad_usuario->bind_param('ssssss', $dados['genero'], $dados['pri_nome'],  $dados['ult_nome'], $dados['username'], $dados['email'], $dados['nif'], $senha_cript, $chave);
@@ -77,7 +82,7 @@
 
                         $mail->isHTML(true);
 
-                        $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+
 
                         $mail->Subject = 'Confirma o e-mail';
                         $mail->Body    = "Prezado(a) " . $dados['pri_nome'] . ' ' . $dados['ult_nome'] . ".<br><br>Agradecemos a sua solicitação de cadastramento em nosso site!<br><br>Para que possamos liberar o seu cadastro em nosso sistema, solicitamos a confirmação do e-mail clicanco no link abaixo: <br><br> 
