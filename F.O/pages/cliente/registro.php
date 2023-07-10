@@ -7,7 +7,7 @@
                 <span id="msgAlertErroCad"></span>
                 <div class="input-radio">
                     <span class="custom-radio"><input type="radio" value="1" name="genero"> Masculino.</span>
-                    <span class="custom-radio"><input type="radio" value="1" name="genero"> Femenino.</span>
+                    <span class="custom-radio"><input type="radio" value="2" name="genero"> Femenino.</span>
                 </div>
                 <br>
                 <div class="form-group">

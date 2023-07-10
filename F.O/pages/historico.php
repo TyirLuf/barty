@@ -2,11 +2,12 @@
 $user = $_SESSION['user'];
 $idCliente = $user['cliente_id'];
 
-$query = "SELECT a.id_servico, s.nome AS nome_servico, f.primeiro_nome, f.ultimo_nome, a.hora, a.data, a.preco_total
+$query = "SELECT a.id_servico, s.nome AS nome_servico, f.primeiro_nome, f.ultimo_nome, a.hora, a.data, a.preco_total, a.status
 FROM agendamentos a
 INNER JOIN servicos s ON a.id_servico = s.servico_id
 INNER JOIN funcionarios f ON a.id_funcionario = f.func_id
 WHERE a.id_cliente = $idCliente";
+
 
 $result = mysqli_query($conn, $query);
 ?>
@@ -28,17 +29,19 @@ $result = mysqli_query($conn, $query);
                             echo '<th class="product-price">Hora</th>';
                             echo '<th class="product_quantity">Data</th>';
                             echo '<th class="product_total">Total</th>';
-                            echo '<th class="product_remove">Cancelar</th>';
+                            echo '<th class="product_total">Estado</th>';
+                            echo '<th class="product_remove">Ação</th>';
                             echo '</tr>';
                             echo '</thead>';
                             echo '<tbody>';
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<tr>';
-                                echo '<td class="product_name"><a href="product-details-default.html">' . $row['nome_servico'] . '</a></td>';
-                                echo '<td class="product_name"><a href="product-details-default.html">' . $row['primeiro_nome'] . ' ' . $row['ultimo_nome'] . '</a></td>';
+                                echo '<td class="product_name"><a href="./?p=2">' . $row['nome_servico'] . '</a></td>';
+                                echo '<td class="product_name"><a href="./?p=2">' . $row['primeiro_nome'] . ' ' . $row['ultimo_nome'] . '</a></td>';
                                 echo '<td class="product-price">' . $row['hora'] . '</td>';
-                                echo '<td class="product_name"><a href="product-details-default.html">' . $row['data'] . '</a></td>';
+                                echo '<td class="product_name"><a href="./?p=2">' . $row['data'] . '</a></td>';
                                 echo '<td class="product_total">' . $row['preco_total'] . '€</td>';
+                                echo '<td class="product_total">' . $row['status'] . '</td>';
                                 echo '<td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>';
                                 echo '</tr>';
                             }

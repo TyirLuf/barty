@@ -45,7 +45,7 @@
             // Salvar os dados do usuário na sessão
             $_SESSION['primeiro_nome'] = $row_usuario['primeiro_nome'];
             $_SESSION['ultimo_nome'] = $row_usuario['ultimo_nome'];
-            $_SESSION['codigo_autenticacao'] = true;            
+            $_SESSION['code'] = true;            
 
             // Redirecionar o usuário
             header('Location: ./');

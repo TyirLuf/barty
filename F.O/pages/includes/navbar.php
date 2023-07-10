@@ -14,7 +14,7 @@ $result = $conn->query($sql);
                         <!-- Start Header Logo -->
                         <div class="header-logo">
                             <div class="logo">
-                                <a href="./"><img src="assets/images/logo/logo_black.png" alt=""></a>
+                                <a href="./"><img src="assets/images/logo/barty_logo.png" alt=""></a>
                             </div>
                         </div>
                         <!-- End Header Logo -->
@@ -34,16 +34,17 @@ $result = $conn->query($sql);
                                         <ul class="sub-menu">
                                             <?php
                                             $sql = "SELECT id, nome FROM tipo_servico";
-                                            $result = $conn->query($sql);
+                                            $resultado = $conn->query($sql);
 
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                    $id = $row["id"];
-                                                    $nome = $row["nome"];
-                                                    echo '<li><a href="./?p=17&id=' . $id . '">' . $nome . '</a></li>';
-
+                                            if (mysqli_num_rows($resultado) > 0) {
+                                                while ($row = mysqli_fetch_assoc($resultado)) {
+                                                    $id = $row['id'];
+                                                    $nome = $row['nome'];
+                                                    echo '<li><a href="./?p=2&id=' . $id . '">' . $nome . '</a></li>';
                                                 }
                                                 echo '<hr>';
+                                            } else {
+                                                echo '<li><a href="#">Nenhum tipo encontrado</a></li>';
                                             }
                                             ?>
                                             <li><a href="./?p=2">Todos</a></li>

@@ -1,7 +1,8 @@
 <?php
+$idTipoServico = isset($_GET['id']) ? $_GET['id'] : '';
 
 // Consulta SQL para obter o número total de serviços
-$sqlTotalServicos = "SELECT COUNT(*) AS total FROM servicos";
+$sqlTotalServicos = "SELECT COUNT(*) AS total FROM servicos WHERE tipo = '$idTipoServico'";
 $resultTotalServicos = $conn->query($sqlTotalServicos);
 $rowTotalServicos = $resultTotalServicos->fetch_assoc();
 $totalServicos = $rowTotalServicos['total'];
@@ -26,8 +27,8 @@ $indiceFim = $indiceInicio + $resultadosPorPagina - 1;
 // Obtém o parâmetro de ordenação da URL
 $ordenacao = isset($_GET['sort']) ? $_GET['sort'] : '';
 
-// Consulta SQL para obter os serviços com base na ordenação
-$sqlServicos = "SELECT * FROM servicos";
+// Consulta SQL para obter os serviços com base no tipo de serviço selecionado e na ordenação
+$sqlServicos = "SELECT * FROM servicos WHERE tipo = '$idTipoServico'";
 
 if ($ordenacao == 'name_z') {
     $sqlServicos .= " ORDER BY nome DESC";
@@ -42,6 +43,7 @@ if ($ordenacao == 'name_z') {
 $resultServicos = $conn->query($sqlServicos);
 
 ?>
+
 
 
 
@@ -125,8 +127,9 @@ $resultServicos = $conn->query($sqlServicos);
                                 <!-- Start Sort Select Option -->
                                 <div class="sort-select-list d-flex align-items-center">
                                     <label class="mr-2">Ordenar:</label>
-                                    <form action="#">
+                                    <form action="./" method="GET">
                                         <fieldset>
+                                            <input type="text" name="p" value="2" hidden>
                                             <select name="sort" id="sort" onchange="this.form.submit()">
                                                 <option value="name_a" <?php if ($ordenacao == 'name_a')
                                                     echo 'selected'; ?>>Ordenar por Nome: A</option>
