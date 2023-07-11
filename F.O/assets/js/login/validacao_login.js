@@ -26,7 +26,7 @@
         const emailValido = regexEmail.exec(email.value);
         if (!emailValido) return addMsgAlert("E-mail inválido", "Verique o campo email e tente novamente");
 
-        if(senha.value.length == 0 || senha.value.length < 8) return addMsgAlert("Palavra-Passe incorreta", "O sua senha está vazio ou não detém o mínimo de 8 caracteres");
+        if(senha.value.length == 0 || senha.value.length < 3) return addMsgAlert("Palavra-Passe incorreta", "O sua senha está vazio ou não detém o mínimo de 8 caracteres");
     }
 
     // BARRA O ENVIO CASO AINDA TIVERMOS CAMPOS INVÁLIDOS
