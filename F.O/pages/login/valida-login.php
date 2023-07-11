@@ -6,7 +6,6 @@ $conn = mysqli_connect("localhost", "root", "", "barty_teste");
 if (isset($_POST['entrar'])) {
 
     if (empty($_POST['email']) || empty($_POST['password'])) {
-        require_once ("../../?p=8&e=1");
         exit();
     } else {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -28,7 +27,7 @@ if (isset($_POST['entrar'])) {
                     exit();
 
                 }
-            else echo 'error login';
+                require_once ("../../?success=1");
 
 
 
@@ -47,7 +46,7 @@ if (isset($_POST['entrar'])) {
                 header("Location: ../../");
                 exit();
             } else {
-                require_once ("../../?p=8&e=2");
+                require_once ("../../?success=1");
             }
         }
     }

@@ -1,3 +1,70 @@
+<?php
+
+// Consulta SQL para obter os dados da tabela empresa
+$sqlEmpresa = "SELECT nome, logo, descricao, telefone, email, horario_trabalho, endereco, loc FROM empresa";
+$resultEmpresa = mysqli_query($conn, $sqlEmpresa);
+
+// Verifica se a consulta da tabela empresa foi executada com sucesso
+if ($resultEmpresa) {
+    // Obtém os dados da empresa
+    $empresa = mysqli_fetch_assoc($resultEmpresa);
+
+    // Armazene os valores das colunas em variáveis
+    $nomeEmpresa = $empresa['nome'];
+    $logoEmpresa = $empresa['logo'];
+    $descricaoEmpresa = $empresa['descricao'];
+    $telefoneEmpresa = $empresa['telefone'];
+    $emailEmpresa = $empresa['email'];
+    $horarioTrabalhoEmpresa = $empresa['horario_trabalho'];
+    $enderecoEmpresa = $empresa['endereco'];
+    $locEmpresa = $empresa['loc'];
+} else {
+    echo "Erro na consulta da tabela empresa: " . mysqli_error($conn);
+}
+
+// Consulta SQL para obter os dados da tabela funcionario
+$sqlFuncionario = "SELECT primeiro_nome, ultimo_nome, rede_social, imagem, funcao FROM funcionarios";
+$resultFuncionario = mysqli_query($conn, $sqlFuncionario);
+
+// Verifica se a consulta da tabela funcionario foi executada com sucesso
+if ($resultFuncionario) {
+    // Obtém os dados do funcionario
+    $funcionario = mysqli_fetch_assoc($resultFuncionario);
+
+    // Armazene os valores das colunas em variáveis
+    $primeiroNomeFuncionario = $funcionario['primeiro_nome'];
+    $ultimoNomeFuncionario = $funcionario['ultimo_nome'];
+    $redeSocialFuncionario = $funcionario['rede_social'];
+    $imagemFuncionario = $funcionario['imagem'];
+    $funcaoFuncionario = $funcionario['funcao'];
+} else {
+    echo "Erro na consulta da tabela funcionario: " . mysqli_error($conn);
+}
+
+// Consulta SQL para obter os dados da tabela tipo_servicos
+$sqlTipoServicos = "SELECT nome, descricao, imagem FROM tipo_servico";
+$resultTipoServicos = mysqli_query($conn, $sqlTipoServicos);
+
+// Verifica se a consulta da tabela tipo_servicos foi executada com sucesso
+if ($resultTipoServicos) {
+    // Obtém os dados do tipo de servicos
+    $tipoServicos = mysqli_fetch_assoc($resultTipoServicos);
+
+    // Armazene os valores das colunas em variáveis
+    $nomeTipoServicos = $tipoServicos['nome'];
+    $descricaoTipoServicos = $tipoServicos['descricao'];
+    $imagemTipoServicos = $tipoServicos['imagem'];
+} else {
+    echo "Erro na consulta da tabela tipo_servicos: " . mysqli_error($conn);
+}
+
+// Feche a conexão com o banco de dados
+
+
+?>
+
+
+
 <div class="about-top">
         <div class="container">
             <div class="row d-flex align-items-center justify-content-between d-sm-column">
@@ -10,15 +77,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="content" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="title">ABOUT OUR HONO STORE</h3>
-                        <h5 class="semi-title">We believe that every project existing in digital world is a result of an
-                            idea and every idea has a cause.</h5>
-                        <p>For this reason, our each design serves an idea. Our strength in design is reflected by our
-                            name, our care for details. Our specialist won't be afraid to go extra miles just to
-                            approach near perfection. We don't require everything to be perfect, but we need them to be
-                            perfectly cared for. That's a reason why we are willing to give contributions at best. Not a
-                            single detail is missed out under Billey's professional eyes.The amount of dedication and
-                            effort equals to the level of passion and determination. Get better, together as one.</p>
+                        <h3 class="title">SOBRE A BARBEARIA BARTY</h3>
+                        <p><?php echo $descricao; ?>.</p>
                     </div>
                 </div>
             </div>
@@ -64,64 +124,38 @@
     <div class="service-promo-section section-top-gap-100">
         <div class="service-wrapper">
             <div class="container">
-                <div class="row">
-                    <!-- Start Service Promo Single Item -->
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="0">
-                            <div class="image">
-                                <img src="assets/images/icons/icon_about1.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h6 class="title">Creative Always</h6>
-                                <p>Stay creative with Billey and the huge collection of premade elements, layouts &
-                                    effects.</p>
-                            </div>
-                        </div>
+            <div class="row">
+    <?php
+    $resultTipoServicos = mysqli_query($conn, $sqlTipoServicos);
+
+    // Verifica se a consulta da tabela tipo_servicos foi executada com sucesso
+    if ($resultTipoServicos && mysqli_num_rows($resultTipoServicos) > 0) {
+        while ($tipoServicos = mysqli_fetch_assoc($resultTipoServicos)) {
+            $nomeTipoServicos = $tipoServicos['nome'];
+            $descricaoTipoServicos = $tipoServicos['descricao'];
+            $imagemTipoServicos = $tipoServicos['imagem'];
+    ?>
+            <!-- Start Service Promo Single Item -->
+            <div class="col-lg-3 col-sm-6 col-12">
+                <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="0">
+                    <div class="image">
+                        <img src="<?php echo $imagemTipoServicos; ?>" alt="">
                     </div>
-                    <!-- End Service Promo Single Item -->
-                    <!-- Start Service Promo Single Item -->
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="200">
-                            <div class="image">
-                                <img src="assets/images/icons/icon_about2.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h6 class="title">Express Customization</h6>
-                                <p>Easy to install and configure the theme customization in a few clicks with Billey.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="content">
+                        <h6 class="title"><?php echo $nomeTipoServicos; ?></h6>
+                        <p><?php echo $descricaoTipoServicos; ?></p>
                     </div>
-                    <!-- End Service Promo Single Item -->
-                    <!-- Start Service Promo Single Item -->
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="400">
-                            <div class="image">
-                                <img src="assets/images/icons/icon_about3.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h6 class="title">Premium Integrations</h6>
-                                <p>Integrated premium plugins in Billey is the secret weapon for your business to
-                                    thrive.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Service Promo Single Item -->
-                    <!-- Start Service Promo Single Item -->
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="600">
-                            <div class="image">
-                                <img src="assets/images/icons/icon_about4.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h6 class="title">Real-time Editing</h6>
-                                <p>Edit your work and preview the changes on the screen live with advanced page builder.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Service Promo Single Item -->
                 </div>
+            </div>
+            <!-- End Service Promo Single Item -->
+    <?php
+        }
+    } else {
+        echo "Nenhum serviço encontrado.";
+    }
+    ?>
+</div>
+
             </div>
         </div>
     </div>
