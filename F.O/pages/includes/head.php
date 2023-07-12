@@ -27,7 +27,6 @@ include_once './pages/login/message.php';
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font awesome CSS -->
@@ -64,7 +63,7 @@ include_once './pages/login/message.php';
     <link rel="stylesheet" href="assets/sass/style.css">
 
     <!-- Appointment Page Stylesheet -->
-    <link rel="stylesheet" href="assets/css/appointment-page-style.css">
+    <link rel="stylesheet" href="assets/css/agendamento.css">
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">

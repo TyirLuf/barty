@@ -164,6 +164,7 @@
     <script src="assets/js/plugins/plugins.min.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/agendamento.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 </html>

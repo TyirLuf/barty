@@ -46,16 +46,13 @@
                 $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: As palavras-passe não correspondem!</div>"];
             } else {
 
-
+                $senha_cript = sha1($dados['pass']);
                 $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
                 $chave = $verification_code;
 
                 $query_usuario = "INSERT INTO clientes (primeiro_nome,ultimo_nome, email, password,data_nascimento,nif,username,genero,code) VALUES (?, ?, ?, ?,?,?,?,?, ?)";
                 $cad_usuario = $conn->prepare($query_usuario);
-                $cad_usuario->bind_param('ssssss', $dados['genero'], $dados['pri_nome'],  $dados['ult_nome'], $dados['username'], $dados['email'], $dados['nif'], $senha_cript, $chave);
-
-                $senha_cript = password_hash($dados['pass'], PASSWORD_DEFAULT);
-                $chave = password_hash($dados['email'] . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
+                $cad_usuario->bind_param('ssssssssi', $dados['pri_nome'],  $dados['ult_nome'],  $dados['email'], $senha_cript, $dados['data_nasc'], $dados['nif'], $dados['username'], $dados['genero'],  $verification_code);
 
                 $cad_usuario->execute();
 
@@ -91,7 +88,11 @@
                $verification_code \n\nEsta mensagem foi enviada a você pela empresa XXX.\nVocê está recebendo porque está cadastrado no banco de dados da empresa XXX. Nenhum e-mail enviado pela empresa XXX tem arquivos anexados ou solicita o preenchimento de senhas e informações cadastrais.\n\n";
                         $mail->send();
 
-                        $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Usuário cadastrado com sucesso. Necessário acessar a caixa de e-mail para confimar o e-mail!</div>"];
+                        $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Usuário cadastrado com sucesso. Necessário acessar a caixa de e-mail para confirmar o e-mail!</div>"];
+
+                        // Redireciona para a página ?p=8
+                        header('Location: ./?p=22');
+                        exit;
                     } catch (Exception $e) {
                         //$retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Usuário não cadastrado com sucesso!</div>"];
 
