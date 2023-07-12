@@ -33,6 +33,7 @@ include_once './pages/login/message.php';
     <!-- Font awesome CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
 
 
 

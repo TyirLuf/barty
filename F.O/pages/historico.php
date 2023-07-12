@@ -2,7 +2,7 @@
 $user = $_SESSION['user'];
 $idCliente = $user['cliente_id'];
 
-$query = "SELECT a.id_servico, s.nome AS nome_servico, f.primeiro_nome, f.ultimo_nome, a.hora, a.data, a.preco_total, a.status
+$query = "SELECT a.id, a.id_servico, s.nome AS nome_servico, f.primeiro_nome, f.ultimo_nome, a.hora, a.data, a.preco_total, a.status
 FROM agendamentos a
 INNER JOIN servicos s ON a.id_servico = s.servico_id
 INNER JOIN funcionarios f ON a.id_funcionario = f.func_id
@@ -42,13 +42,16 @@ $result = mysqli_query($conn, $query);
                                 echo '<td class="product_name"><a href="./?p=2">' . $row['data'] . '</a></td>';
                                 echo '<td class="product_total">' . $row['preco_total'] . '€</td>';
                                 echo '<td class="product_total">' . $row['status'] . '</td>';
-                                echo '<td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>';
-                                echo '</tr>';
+                                echo '<td class="product_remove"><a href="./pages/apagar_agendamentos.php&id=' . $row['id'] . '"><i class="fa fa-trash-o"></i></a></td>';
+
                             }
                             echo '</tbody>';
                             echo '</table>';
                             echo '<div class="cart_submit">';
-                            echo '<button class="btn btn-md btn-golden" type="submit">Limpar Histórico</button>';
+                            echo '<form action="./pages/apagar_agendamentos.php" method="post">';
+                            echo '<button class="btn btn-md btn-golden" type="submit" name="limpar">Limpar Histórico</button>';
+                            echo '</form>';
+                            
                             echo '</div>';
                         } else {
                             echo '<div class="emptycart-content text-center">';

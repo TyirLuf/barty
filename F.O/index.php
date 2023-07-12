@@ -7,7 +7,7 @@ include './pages/includes/navbar.php';
     <?php
     $pages = [
         0 => "./pages/principal/home.php",
-        1 => "./pages/teste.php",
+        1 => "./pages/agendar.php",
         2 => "./pages/cliente/servicos.php",
         3 => "./pages/servico_cortes.php",
         4 => "./pages/servico_barba.php",
@@ -21,6 +21,7 @@ include './pages/includes/navbar.php';
         16 => "./pages/login/verificar_code.php",
         17 => "./pages/cliente/tipo_servico.php",
         18 => "./pages/historico.php",
+        19 => "./pages/apagar_agendamentos.php",
         20 => "./pages/login/conteudo.php",
         21 => "./pages/login/conteudo_login.php",
         22 => "./pages/login/vereficar_code.php",

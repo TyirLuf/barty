@@ -69,7 +69,7 @@ $result = $conn->query($sql);
                         <ul class="header-action-link action-color--black action-hover-color--golden">
 
                             <li>
-                                <a href="./?p=6">
+                                <a href="./?p=1">
                                     <i class="icon-calendar"></i>
                                 </a>
                             </li>
