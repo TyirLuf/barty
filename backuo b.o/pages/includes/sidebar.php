@@ -13,7 +13,7 @@
                         <a href="./"><img src="assets/img/sidebar/icon-1.png" alt="icon" /><span>Dashboard</span></a>
                     </li>
                     <li>
-                        <a href="./?p=1"><img src="assets/img/sidebar/icon-2.png" alt="icon" />
+                        <a href="./?p=3"><img src="assets/img/sidebar/icon-2.png" alt="icon" />
                             <span>Funcioanarios</span></a>
                     </li>
                     <li>

@@ -1,63 +1,44 @@
-<h2>Digite o código enviado no e-mail cadastrado</h2>
-
 <?php
-// Receber os dados do formulário
-$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+$email = isset($_GET['email']) ? $_GET['email'] : '';
+if (isset($_POST['submit'])) {
+    $codigoInserido = $_POST['codigo'];
+    // Consultar o banco de dados para obter o código correspondente ao email
+    $sql = "SELECT code FROM clientes WHERE email = '$email'";
+    $resultado = mysqli_query($conn, $sql);
 
-print_r($dados);
-die();
+    if ($resultado && mysqli_num_rows($resultado) > 0) {
+        $row = mysqli_fetch_assoc($resultado);
+        $codigoArmazenado = $row['code'];
 
+        // Verificar se o código inserido corresponde ao código armazenado no banco de dados
+        if ($codigoInserido === $codigoArmazenado) {
+            // Atualizar o estado da conta do usuário no banco de dados
+            $sql = "UPDATE clientes SET estado_id = '1' WHERE email = '$email'";
+            $resultado = mysqli_query($conn, $sql);
 
+            
 
-// Acessar o IF quando o usuário clicar no botão acessar do formulário
-if (isset($dados['codigo'])) {
-    // Recuperar os dados do usuário no banco de dados
-    $query_usuario = "SELECT cliente_id, primeiro_nome, ultimo_nome, email, password, data_nascimento, nif, username
-                FROM clientes 
-                WHERE email = ?
-                AND code = ? 
-                AND estado_id = 3 ";
-
-    // Preparar a QUERY
-    $result_usuario = $conn->prepare($query_usuario);
-    $result_usuario->bind_param('si', $dados['email'], $dados['codigo']);
-
-    // Executar a QUERY
-    $result_usuario->execute();
-
-    // Acessar o IF quando encontrar usuário no banco de dados
-    if ($result_usuario->num_rows > 0) {
-
-        // Ler os registros retornados do banco de dados
-        $row_usuario = $result_usuario->fetch_assoc();
-
-        // QUERY para salvar no banco de dados o código e a data gerada
-        $query_up_usuario = "UPDATE clientes SET estado_id = 1 WHERE cliente_id = ? ";
-
-        // Preparar a QUERY
-        $result_up_usuario = $conn->prepare($query_up_usuario);
-        $result_up_usuario->bind_param('i', $row_usuario['cliente_id']);
-
-        // Executar a QUERY
-        $result_up_usuario->execute();
-      
-        // Redirecionar o usuário
-        header('Location: ./?p=8');
-        exit();
+            if ($resultado) {
+                $_SESSION['msg'] = "Código verificado com sucesso!";
+                header('Location: ./?p=8');
+                exit();
+            } else {
+                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: enail inválido!</p>";
+                
+            }
+        } else {
+            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Código inválido!</p>";
+           
+        }
     } else {
-        $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Código inválido!</p>";
+        $_SESSION['msgerro'] = "Erro ao buscar o código. Por favor, tente novamente.";
+        header('location: ./?p=16&email=' . urlencode($email));
+        exit();
     }
-}
-
-// Imprimir a mensagem da sessão
-if (isset($_SESSION['msg'])) {
-    echo $_SESSION['msg'];
-    unset($_SESSION['msg']);
 }
 ?>
 
-<!-- Inicio do formulário validar código -->
-<form action="" method="POST">
+<form method="POST">
     <span id="msgAlertErroCad"></span>
     <br>
     <div class="form-group">
@@ -72,8 +53,10 @@ if (isset($_SESSION['msg'])) {
     </div>
 
     <div class="login_submit">
-        <button class="btn btn-md btn-black-default-hover" type="submit" name="validar">Validar</button>
+        <button class="btn btn-md btn-black-default-hover" type="submit" name="submit">Verificar
+
+        </button>
     </div>
 </form><br>
-<!-- Fim do formulário validar código -->
+
 

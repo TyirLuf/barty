@@ -1,9 +1,7 @@
 <?php
 $sql = "SELECT id,nome FROM tipo_servico";
 $result = $conn->query($sql);
-
 ?>
-
 <!-- Navbar -->
 <header class="header-section d-none d-xl-block">
     <div class="header-wrapper">

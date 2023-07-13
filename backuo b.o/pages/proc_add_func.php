@@ -26,22 +26,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         require("../../php/connect.php");
 
-        
-        $sql = "INSERT INTO funcionarios (primeiro_nome, senha, email, anos_experiencia, ultimo_nome, confirmar_senha, telefone, especializacoes, data_nascimento, descricao, imagem) VALUES ('$primeiro_nome', '$password', '$email', '$anos_experiencia', '$ultimo_nome', '$confirmar_password', '$telefone', '$especializacoes', '$data_nascimento', '$descricao', '$imagem')";
-        
+        // Obter o ID da função com base no nome da função enviado pelo formulário
+        $funcaoNome = $_POST["funcao"];
+        $sqlFuncaoId = "SELECT id FROM tipo_servico WHERE nome = '$funcaoNome'";
+        $resultFuncaoId = $conn->query($sqlFuncaoId);
+
+        if ($resultFuncaoId->num_rows > 0) {
+            $rowFuncaoId = $resultFuncaoId->fetch_assoc();
+            $funcaoId = $rowFuncaoId['id'];
+        } else {
+            $funcaoId = null; // Define um valor padrão caso a função não seja encontrada
+        }
+
+        $sql = "INSERT INTO funcionarios (primeiro_nome, senha, email, anos_experiencia, ultimo_nome, confirmar_senha, telefone, especializacoes, data_nascimento, descricao, imagem, funcao) VALUES ('$primeiro_nome', '$password', '$email', '$anos_experiencia', '$ultimo_nome', '$confirmar_password', '$telefone', '$especializacoes', '$data_nascimento', '$descricao', '$imagem', '$funcaoId')";
+
         if ($conn->query($sql) === TRUE) {
-//            header("Location: ../../?p=1"); // redirect
+            // header("Location: ../../?p=1"); // redirect
             exit;
         } else {
             echo "Erro ao adicionar o funcionário: " . $conn->error;
         }
-        
+
         $conn->close();
     } else {
         // Campos obrigatórios não preenchidos, exiba uma mensagem de erro ou redirecione para uma página de erro
         echo "Por favor, preencha todos os campos obrigatórios!";
     }
 }
-
-
 ?>
