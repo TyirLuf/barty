@@ -14,8 +14,8 @@ include './pages/includes/sidebar.php';
         2 => "./pages/add_cli.php",
         3 => "./pages/all_func.php",
         4 => "./pages/listar_func.php",
-        5 => "./pages/funcionario/excluir.php",
-        6 => "./pages/funcionario/add.php",
+        5 => "./pages/editar_func.php",
+        6 => "./pages/deletar_func.php",
         7 => "./pages/funcionario/lista.php",
         8 => "./pages/funcionario/processa_add.php",
     ];

@@ -47,7 +47,7 @@ $totalServicos = $rowServicos['total_servicos'];
         <div class="dash-widget dash-widget5">
           <span class="float-left"><img src="assets/img/dash/dash-1.png" alt="" width="80" /></span>
           <div class="dash-widget-info text-right">
-            <span>Agendamentos</span>
+            <span>Agendamentos por realizar</span>
             <h3><?php echo $totalAgendamentos; ?></h3>
           </div>
         </div>
@@ -73,7 +73,7 @@ $totalServicos = $rowServicos['total_servicos'];
       <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
         <div class="dash-widget dash-widget5">
           <div class="dash-widget-info d-inline-block text-left">
-            <span>Total de Agendamdos Realizados</span>
+            <span> Agendamdos Realizados</span>
             <h3><?php echo $totalServicos; ?></h3>
           </div>
           <span class="float-right"><img src="assets/img/dash/dash-4.png" alt="" width="80" /></span>

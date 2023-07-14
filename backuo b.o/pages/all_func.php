@@ -102,8 +102,8 @@
                             <div class="dropdown profile-action">
                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="./?p=4&id=<?php echo $id; ?>"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-                                    <a class="dropdown-item" href="./?p=5&id=<?php echo $id; ?>"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+                                    <a class="dropdown-item" href="./?p=5&id=<?php echo $id; ?>"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
+                                    <a class="dropdown-item" href="./?p=6&id=<?php echo $id; ?>"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
                                 </div>
                             </div>
                             <h4 class="user-name m-t-10 m-b-0 text-ellipsis"><a href="profile.html"><?php echo $primeiro_nome . " " . $ultimo_nome; ?></a></h4>
