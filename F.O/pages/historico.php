@@ -1,4 +1,5 @@
 <?php
+
 $user = $_SESSION['user'];
 $idCliente = $user['cliente_id'];
 
@@ -42,7 +43,8 @@ $result = mysqli_query($conn, $query);
                                 echo '<td class="product_name"><a href="./?p=2">' . $row['data'] . '</a></td>';
                                 echo '<td class="product_total">' . $row['preco_total'] . '€</td>';
                                 echo '<td class="product_total">' . $row['status'] . '</td>';
-                                echo '<td class="product_remove"><a href="./pages/apagar_agendamentos.php&id=' . $row['id'] . '"><i class="fa fa-trash-o"></i></a></td>';
+                              echo '<td class="product_remove"><a href="./pages/apagar_agendamentos.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i></a></td>';
+
 
                             }
                             echo '</tbody>';

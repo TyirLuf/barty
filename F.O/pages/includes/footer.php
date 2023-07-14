@@ -138,7 +138,7 @@
     <script src="assets/js/plugins/aos.min.js"></script>
     <script src="assets/js/plugins/jquery.instagramFeed.js"></script>
     <script src="assets/js/plugins/ajax-mail.js"></script> -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="js/mobiscroll.javascript.min.js"></script>
     <!-- Optional JavaScript -->
@@ -158,7 +158,11 @@
     <!-- ARQUIVO DE MASKS PARA INPUTS -->
     <script src="assets/js/mask_forms.js"></script>
     <!-- SWEET ALERT -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
     <script src="assets/js/vendor/vendor.min.js"></script>
     <script src="assets/js/plugins/plugins.min.js"></script>

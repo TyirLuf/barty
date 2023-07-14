@@ -1,23 +1,20 @@
 <?php
-$email = isset($_GET['email']) ? $_GET['email'] : '';
+
 if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
     $codigoInserido = $_POST['codigo'];
     // Consultar o banco de dados para obter o código correspondente ao email
-    $sql = "SELECT code FROM clientes WHERE email = '$email'";
+    $sql = "SELECT code FROM clientes WHERE email = '$email' and estado_id = 3";
     $resultado = mysqli_query($conn, $sql);
 
     if ($resultado && mysqli_num_rows($resultado) > 0) {
         $row = mysqli_fetch_assoc($resultado);
         $codigoArmazenado = $row['code'];
-
         // Verificar se o código inserido corresponde ao código armazenado no banco de dados
-        if ($codigoInserido === $codigoArmazenado) {
+        if ($codigoInserido == $codigoArmazenado) {
             // Atualizar o estado da conta do usuário no banco de dados
-            $sql = "UPDATE clientes SET estado_id = '1' WHERE email = '$email'";
+            $sql = "UPDATE clientes SET estado_id = 1, code = 0 WHERE email = '$email'";
             $resultado = mysqli_query($conn, $sql);
-
-            
-
             if ($resultado) {
                 $_SESSION['msg'] = "Código verificado com sucesso!";
                 header('Location: ./?p=8');

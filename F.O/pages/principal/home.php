@@ -17,6 +17,8 @@
                         <div class="row">
                             <div class="col-auto">
                                 <div class="hero-slider-content">
+                                <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+                                    <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
                                     <a href="product-details-default.html" class="btn btn-lg btn-outline-golden">Fazer Agendamento</a>
                                     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
                                     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
@@ -110,12 +112,7 @@
                                     echo '</a>';
                                     echo '<div class="action-link">';
                                     echo '<div class="action-link-left">';
-                                    echo '<a href="./?p=2" data-bs-toggle="modal" >Add to Cart</a>';
-                                    echo '</div>';
-                                    echo '<div class="action-link-right">';
-                                    echo '<a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>';
-                                    echo '<a href="wishlist.html"><i class="icon-heart"></i></a>';
-                                    echo '<a href="compare.html"><i class="icon-shuffle"></i></a>';
+                                    echo '<a href="./?p=2" data-bs-toggle="modal" >Fazer Agendamento</a>';
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';
@@ -131,7 +128,7 @@
                                     echo '</ul>';
                                     echo '</div>';
                                     echo '<div class="content-right">';
-                                    echo '<span class="price">' . $preco . '</span>';
+                                    echo '<span class="price">' . $preco . ' €</span>';
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';
