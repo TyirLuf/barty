@@ -4,7 +4,7 @@
 <?php
 
 // Consulta SQL para obter os dados da tabela empresa
-$sqlEmpresa = "SELECT nome, logo, descricao, telefone, email, horario_trabalho, endereco, loc FROM empresa";
+$sqlEmpresa = "SELECT nome, logo,imagem, descricao, telefone, email, horario_trabalho, endereco, loc FROM empresa";
 $resultEmpresa = mysqli_query($conn, $sqlEmpresa);
 
 // Verifica se a consulta da tabela empresa foi executada com sucesso
@@ -15,6 +15,7 @@ if ($resultEmpresa) {
     // Armazene os valores das colunas em variáveis
     $nomeEmpresa = $empresa['nome'];
     $logoEmpresa = $empresa['logo'];
+    $imagemEmpresa = $empresa['imagem'];
     $descricaoEmpresa = $empresa['descricao'];
     $telefoneEmpresa = $empresa['telefone'];
     $emailEmpresa = $empresa['email'];
@@ -76,7 +77,7 @@ if ($resultTipoServicos) {
             <div class="col-md-6">
                 <div class="about-img" data-aos="fade-up" data-aos-delay="0">
                     <div class="img-responsive">
-                        <img src="assets/images/about/img-about.jpg" alt="">
+                        <img src="<?php echo  $imagemEmpresa; ?>" alt="">
                     </div>
                 </div>
             </div>
