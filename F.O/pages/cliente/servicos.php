@@ -2,13 +2,21 @@
 $idTipoServico = isset($_GET['id']) ? $_GET['id'] : '';
 
 // Consulta SQL para obter o número total de serviços
-$sqlTotalServicos = "SELECT COUNT(*) AS total FROM servicos WHERE tipo = '$idTipoServico'";
+$sqlTotalServicos = "SELECT COUNT(*) AS total FROM servicos";
+if ($idTipoServico != '') {
+    $sqlTotalServicos .= " WHERE tipo = '$idTipoServico'";
+}
+
 $resultTotalServicos = $conn->query($sqlTotalServicos);
 $rowTotalServicos = $resultTotalServicos->fetch_assoc();
 $totalServicos = $rowTotalServicos['total'];
 
 // Define o número de resultados por página
-$resultadosPorPagina = 9;
+if ($totalServicos > 0) {
+    $resultadosPorPagina = $totalServicos;
+} else {
+    $resultadosPorPagina = 9;
+}
 
 // Calcula o número total de páginas
 $totalPaginas = ceil($totalServicos / $resultadosPorPagina);
@@ -28,7 +36,7 @@ $indiceFim = $indiceInicio + $resultadosPorPagina - 1;
 $ordenacao = isset($_GET['sort']) ? $_GET['sort'] : '';
 
 // Consulta SQL para obter os serviços com base no tipo de serviço selecionado e na ordenação
-if($idTipoServico=="")
+if ($idTipoServico == "")
     $sqlServicos = "SELECT * FROM servicos ";
 else
     $sqlServicos = "SELECT * FROM servicos WHERE tipo = '$idTipoServico'";
@@ -63,39 +71,29 @@ if ($ordenacao == 'name_z') {
                             <ul class="sidebar-menu">
                                 <?php
                                 // Faça a conexão com o banco de dados antes de executar esta parte do código
-                                $conn = mysqli_connect("localhost", "root", "", "barty_teste");
+                             
                                 // Consulta SQL para buscar os nomes dos tipos de serviço da tabela tipo_servico
                                 $sql = "SELECT * FROM tipo_servico Order by nome ASC";
                                 $resultado = mysqli_query($conn, $sql);
 
                                 if (mysqli_num_rows($resultado) > 0) {
                                     while ($row = mysqli_fetch_assoc($resultado)) {
+                                        $id = $row['id'];
                                         $nome = $row['nome'];
-                                        echo '<li><a href="#">' . $nome . '</a></li>';
+                                        echo '<li><a href="./?p=2&id=' . $id . '">' . $nome . '</a></li>';
                                     }
                                 } else {
                                     echo '<li><a href="#">Nenhum tipo encontrado</a></li>';
                                 }
 
                                 // Feche a conexão com o banco de dados após usar
-                                
+
                                 ?>
                             </ul>
                         </div>
 
                     </div> <!-- End Single Sidebar Widget -->
 
-                    <!-- Start Single Sidebar Widget -->
-                    <div class="sidebar-single-widget">
-                        <h6 class="sidebar-title">FILTRAR POR PREÇO</h6>
-                        <div class="sidebar-content">
-                            <div id="slider-range"></div>
-                            <div class="filter-type-price">
-                                <label for="amount">Preço:</label>
-                                <input type="text" id="amount">
-                            </div>
-                        </div>
-                    </div> <!-- End Single Sidebar Widget -->
                 </div> <!-- End Sidebar Area -->
             </div>
             <div class="col-lg-9">
@@ -104,15 +102,12 @@ if ($ordenacao == 'name_z') {
                     <div class="container">
                         <div class="row">
                             <!-- Start Sort Wrapper Box -->
-                            <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column"
-                                data-aos="fade-up" data-aos-delay="0">
+                            <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column" data-aos="fade-up" data-aos-delay="0">
                                 <!-- Start Sort tab Button -->
                                 <div class="sort-tablist d-flex align-items-center">
                                     <ul class="tablist nav sort-tab-btn">
-                                        <li><a class="nav-link" data-bs-toggle="tab" href="#layout-3-grid"><img
-                                                    src="assets/images/icons/bkg_grid.png" alt=""></a></li>
-                                        <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-list"><img
-                                                    src="assets/images/icons/bkg_list.png" alt=""></a></li>
+                                        <li><a class="nav-link" data-bs-toggle="tab" href="#layout-3-grid"><img src="assets/images/icons/bkg_grid.png" alt=""></a></li>
+                                        <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-list"><img src="assets/images/icons/bkg_list.png" alt=""></a></li>
                                     </ul>
 
                                     <!-- Start Page Amount -->
@@ -134,13 +129,13 @@ if ($ordenacao == 'name_z') {
                                             <input type="text" name="id" value="<?php echo $idTipoServico; ?>" hidden>
                                             <select name="sort" id="sort" onchange="this.form.submit()">
                                                 <option value="name_a" <?php if ($ordenacao == 'name_a')
-                                                    echo 'selected'; ?>>Ordenar por Nome: A</option>
+                                                                            echo 'selected'; ?>>Ordenar por Nome: A</option>
                                                 <option value="name_z" <?php if ($ordenacao == 'name_z')
-                                                    echo 'selected'; ?>>Ordenar por Nome: Z</option>
+                                                                            echo 'selected'; ?>>Ordenar por Nome: Z</option>
                                                 <option value="price_low_high" <?php if ($ordenacao == 'price_low_high')
-                                                    echo 'selected'; ?>>Ordenar por Preço: baixo para alto</option>
+                                                                                    echo 'selected'; ?>>Ordenar por Preço: baixo para alto</option>
                                                 <option value="price_high_low" <?php if ($ordenacao == 'price_high_low')
-                                                    echo 'selected'; ?>>Ordenar por Preço: alto para baixo</option>
+                                                                                    echo 'selected'; ?>>Ordenar por Preço: alto para baixo</option>
                                             </select>
                                         </fieldset>
                                     </form>
@@ -164,7 +159,7 @@ if ($ordenacao == 'name_z') {
                                         <div class="row">
                                             <?php
                                             // Faça a conexão com o banco de dados antes de executar esta parte do código
-                                            
+
                                             // Consulta SQL para buscar os dados da tabela servicos
                                             $resultado = mysqli_query($conn, $sqlServicos);
 
@@ -185,21 +180,12 @@ if ($ordenacao == 'name_z') {
                                                                                 <div class="action-link-left">
                                                                                     <a href="./?p=1" data-bs-toggle="modal">Fazer Agendamento</a>
                                                                                 </div>
-                                                                                <div class="action-link-right">
-                                                                                    <a href="wishlist.html"><i class="icon-heart"></i></a>
-                                                                                </div>
+                                                                           
                                                                             </div>
                                                                         </div>
                                                                         <div class="content">
                                                                             <div class="content-left">
                                                                                 <h6 class="title"><a href="product-details-default.html">' . $nome . '</a></h6>
-                                                                                <ul class="review-star">
-                                                                                    <li class="fill"><i class="ion-android-star"></i></li>
-                                                                                    <li class="fill"><i class="ion-android-star"></i></li>
-                                                                                    <li class="fill"><i class="ion-android-star"></i></li>
-                                                                                    <li class="fill"><i class="ion-android-star"></i></li>
-                                                                                    <li class="empty"><i class="ion-android-star"></i></li>
-                                                                                </ul>
                                                                             </div>
                                                                             <div class="content-right">
                                                                                 <span class="price">' . $preco . '€</span>
@@ -240,39 +226,25 @@ if ($ordenacao == 'name_z') {
                                             <?php foreach ($dadosServicos as $servico) { ?>
                                                 <div class="col-12">
                                                     <!-- Start Product Defautlt Single -->
-                                                    <div class="product-list-single product-color--golden"
-                                                        data-aos="fade-up" data-aos-delay="0">
-                                                        <a href="product-details-default.html"
-                                                            class="product-list-img-link">
-                                                            <img class="img-fluid" src="<?php echo $servico['link_img']; ?>"
-                                                                alt=""
-                                                                style="width: 295px; height: 250px; margin-right: 20px;">
+                                                    <div class="product-list-single product-color--golden" data-aos="fade-up" data-aos-delay="0">
+                                                        <a href="product-details-default.html" class="product-list-img-link">
+                                                            <img class="img-fluid" src="<?php echo $servico['link_img']; ?>" alt="" style="width: 295px; height: 250px; margin-right: 20px;">
                                                         </a>
                                                         <div class="product-list-content">
-                                                            <h5 class="product-list-link"><a
-                                                                    href="product-details-default.html">
+                                                            <h5 class="product-list-link"><a href="product-details-default.html">
                                                                     <?php echo $servico['nome']; ?>
                                                                 </a></h5>
-                                                            <ul class="review-star">
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                                            </ul>
+                                                            <br>
                                                             <span class="product-list-price">
-                                                                <?php echo $servico['preco']; ?>
+                                                                <?php echo $servico['preco']; ?> €
                                                             </span>
                                                             <p>
                                                                 <?php echo $servico['descricao']; ?>
                                                             </p>
                                                             <div class="product-action-icon-link-list">
-                                                                <a href="./?p=1" data-bs-toggle="modal"
-                                                                    class="btn btn-lg btn-black-default-hover">Fazer
+                                                                <a href="./?p=1" data-bs-toggle="modal" class="btn btn-lg btn-black-default-hover">Fazer
                                                                     Agendamento</a>
-                                                                <a href="wishlist.html"
-                                                                    class="btn btn-lg btn-black-default-hover"><i
-                                                                        class="icon-heart"></i></a>
+                                                            
                                                             </div>
                                                         </div>
                                                     </div> <!-- End Product Defautlt Single -->
@@ -286,18 +258,11 @@ if ($ordenacao == 'name_z') {
                         </div>
                     </div>
                 </div>
-            </div> <!-- End Tab Wrapper -->
+                <!-- End Tab Wrapper -->
 
-            <!-- Start Pagination -->
-            <div class="page-pagination text-center" data-aos="fade-up" data-aos-delay="0">
-                <ul>
-                    <li><a class="active" href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#"><i class="ion-ios-skipforward"></i></a></li>
-                </ul>
-            </div> <!-- End Pagination -->
-        </div> <!-- End Shop Product Sorting Section  -->
+                <!-- Start Pagination -->
+             <!-- End Pagination -->
+            </div> <!-- End Shop Product Sorting Section  -->
+        </div>
     </div>
-</div>
 </div> <!-- ...:::: End Shop Section:::... -->

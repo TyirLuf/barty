@@ -5,7 +5,7 @@
         <div class="login">
             <div class="login_form_container">
                 <div class="account_login_form">
-                    <form action="./pages/login/processa_perfil.php" method="post">
+                    <form action="./pages/processos/processar_perfil.php" method="post">
                         <br>
                         <div class="input-radio">
                             <span class="custom-radio">

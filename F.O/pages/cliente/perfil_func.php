@@ -4,7 +4,9 @@ if (isset($_GET['id'])) {
 }
 
 // Consulta para buscar as informações da tabela "funcionarios"
-$sql = "SELECT * FROM funcionarios WHERE func_id = $id";
+$sql = "SELECT f.*, t.nome AS nome FROM funcionarios f
+        INNER JOIN tipo_servico t ON f.funcao = t.id
+        WHERE f.func_id = $id";
 $result = $conn->query($sql);
 
 // Verifica se a consulta retornou funcionários
@@ -17,7 +19,8 @@ if ($result->num_rows > 0) {
     $descricao = $row["descricao"];
     $habilidades = $row["especializacao"];
     $genero = $row["genero"];
-    $experiencia = $row["anos_experiencia"];
+    $funcao = $row["funcao"];
+    $nomeFuncao = $row["nome"];
 } else {
     // Caso nenhum funcionário seja encontrado
     $imagem = "caminho/para/uma/imagem/default.jpg";
@@ -26,7 +29,7 @@ if ($result->num_rows > 0) {
     $descricao = "Nenhuma descrição disponível.";
     $habilidades = "Nenhuma habilidade disponível.";
     $genero = "Nenhum cadrasto de gênero encontrado.";
-    $experiencia = "Nenhuma experiência disponível.";
+    $funcao = "Nenhuma experiência disponível.";
 }
 
 // Fecha a conexão com o banco de dados
@@ -91,9 +94,7 @@ if ($result->num_rows > 0) {
                         <li><a class="nav-link" data-bs-toggle="tab" href="#specification">
                                 Especificação
                             </a></li>
-                        <li><a class="nav-link" data-bs-toggle="tab" href="#review">
-                                Avaliações
-                            </a></li>
+                        
                     </ul> <!-- End Product Details Tab Button -->
 
                     <!-- Start Product Details Tab Content -->
@@ -115,176 +116,19 @@ if ($result->num_rows > 0) {
                                                 <td><?php echo $genero; ?></td>
                                             </tr>
                                             <tr>
+                                                <th scope="row">Função</th>
+                                                <td><?php echo $nomeFuncao; ?></td>
+                                            </tr>
+                                            <tr>
                                                 <th scope="row">Habilidades</th>
                                                 <td><?php echo $habilidades; ?></td>
-                                            <tr>
-                                                <th scope="row">Experiência</th>
-                                                <td><?php echo $experiencia; ?></td>
-                                            </tr>
+                                            </tr> 
                                         </tbody>
                                     </table>
                                 </div>
                             </div> <!-- End Product Details Tab Content Singel -->
                             <!-- Start Product Details Tab Content Singel -->
-                            <div class="tab-pane" id="review">
-                                <div class="single-tab-content-item">
-                                    <!-- Start - Review Comment -->
-                                    <ul class="comment">
-                                        <!-- Start - Review Comment list-->
-                                        <li class="comment-list">
-                                            <div class="comment-wrapper">
-                                                <div class="comment-img">
-                                                    <img src="assets/images/user/image-1.png" alt="">
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-content-top">
-                                                        <div class="comment-content-left">
-                                                            <h6 class="comment-name">Kaedyn Fraser</h6>
-                                                            <ul class="review-star">
-                                                                <li class="fill"><i class="ion-android-star"></i>
-                                                                </li>
-                                                                <li class="fill"><i class="ion-android-star"></i>
-                                                                </li>
-                                                                <li class="fill"><i class="ion-android-star"></i>
-                                                                </li>
-                                                                <li class="fill"><i class="ion-android-star"></i>
-                                                                </li>
-                                                                <li class="empty"><i class="ion-android-star"></i>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="comment-content-right">
-                                                            <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="para-content">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Tempora inventore dolorem a unde modi iste odio amet,
-                                                            fugit fuga aliquam, voluptatem maiores animi dolor nulla
-                                                            magnam ea! Dignissimos aspernatur cumque nam quod sint
-                                                            provident modi alias culpa, inventore deserunt
-                                                            accusantium amet earum soluta consequatur quasi eum eius
-                                                            laboriosam, maiores praesentium explicabo enim dolores
-                                                            quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam
-                                                            officia, saepe repellat. </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Start - Review Comment Reply-->
-                                            <ul class="comment-reply">
-                                                <li class="comment-reply-list">
-                                                    <div class="comment-wrapper">
-                                                        <div class="comment-img">
-                                                            <img src="assets/images/user/image-2.png" alt="">
-                                                        </div>
-                                                        <div class="comment-content">
-                                                            <div class="comment-content-top">
-                                                                <div class="comment-content-left">
-                                                                    <h6 class="comment-name">Oaklee Odom</h6>
-                                                                </div>
-                                                                <div class="comment-content-right">
-                                                                    <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="para-content">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur
-                                                                    adipisicing elit. Tempora inventore dolorem a
-                                                                    unde modi iste odio amet, fugit fuga aliquam,
-                                                                    voluptatem maiores animi dolor nulla magnam ea!
-                                                                    Dignissimos aspernatur cumque nam quod sint
-                                                                    provident modi alias culpa, inventore deserunt
-                                                                    accusantium amet earum soluta consequatur quasi
-                                                                    eum eius laboriosam, maiores praesentium
-                                                                    explicabo enim dolores quaerat! Voluptas ad
-                                                                    ullam quia odio sint sunt. Ipsam officia, saepe
-                                                                    repellat. </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul> <!-- End - Review Comment Reply-->
-                                        </li> <!-- End - Review Comment list-->
-                                        <!-- Start - Review Comment list-->
-                                        <li class="comment-list">
-                                            <div class="comment-wrapper">
-                                                <div class="comment-img">
-                                                    <img src="assets/images/user/image-3.png" alt="">
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-content-top">
-                                                        <div class="comment-content-left">
-                                                            <h6 class="comment-name">Jaydin Jones</h6>
-                                                            <ul class="review-star">
-                                                                <li class="fill"><i class="ion-android-star"></i>
-                                                                </li>
-                                                                <li class="fill"><i class="ion-android-star"></i>
-                                                                </li>
-                                                                <li class="fill"><i class="ion-android-star"></i>
-                                                                </li>
-                                                                <li class="fill"><i class="ion-android-star"></i>
-                                                                </li>
-                                                                <li class="empty"><i class="ion-android-star"></i>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="comment-content-right">
-                                                            <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="para-content">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Tempora inventore dolorem a unde modi iste odio amet,
-                                                            fugit fuga aliquam, voluptatem maiores animi dolor nulla
-                                                            magnam ea! Dignissimos aspernatur cumque nam quod sint
-                                                            provident modi alias culpa, inventore deserunt
-                                                            accusantium amet earum soluta consequatur quasi eum eius
-                                                            laboriosam, maiores praesentium explicabo enim dolores
-                                                            quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam
-                                                            officia, saepe repellat. </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li> <!-- End - Review Comment list-->
-                                    </ul> <!-- End - Review Comment -->
-                                    <div class="review-form">
-                                        <div class="review-form-text-top">
-                                            <h5>ADD A REVIEW</h5>
-                                            <p>Your email address will not be published. Required fields are marked
-                                                *</p>
-                                        </div>
-
-                                        <form action="#" method="post">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="default-form-box">
-                                                        <label for="comment-name">Your name <span>*</span></label>
-                                                        <input id="comment-name" type="text" placeholder="Enter your name" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="default-form-box">
-                                                        <label for="comment-email">Your Email <span>*</span></label>
-                                                        <input id="comment-email" type="email" placeholder="Enter your email" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="default-form-box">
-                                                        <label for="comment-review-text">Your review
-                                                            <span>*</span></label>
-                                                        <textarea id="comment-review-text" placeholder="Write a review" required></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <button class="btn btn-md btn-black-default-hover" type="submit">Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div> <!-- End Product Details Tab Content Singel -->
+                            <!-- End Product Details Tab Content Singel -->
                         </div>
                     </div> <!-- End Product Details Tab Content -->
 

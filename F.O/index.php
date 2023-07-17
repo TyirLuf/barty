@@ -6,26 +6,19 @@ include './pages/includes/navbar.php';
     <!--- Mapeamento de Paginas-->
     <?php
     $pages = [
-        0 => "./pages/principal/home.php",
-        1 => "./pages/agendar.php",
+        0 => "./pages/home.php",
+        1 => "./pages/cliente/agendar.php",
         2 => "./pages/cliente/servicos.php",
-        3 => "./pages/servico_cortes.php",
-        4 => "./pages/servico_barba.php",
-        5 => "./pages/principal/sobre.php",
-        6 => "./pages/principal/contact.php",
+        5 => "./pages/cliente/sobre.php",
+        6 => "./pages/cliente/contact.php",
         7 => "./pages/cliente/perfil.php",
         8 => "./pages/cliente/login.php",
         9 => "./pages/cliente/registro.php",
         10 => "./pages/cliente/perfil_func.php",
-        15 => "./pages/principal/enviarmsgm.php",
-        16 => "./pages/login/verificar_code.php",
-        17 => "./pages/cliente/tipo_servico.php",
-        18 => "./pages/historico.php",
-        19 => "./pages/apagar_agendamentos.php",
-        20 => "./pages/login/conteudo.php",
+        16 => "./pages/cliente/verificar_code.php",
+        18 => "./pages/cliente/historico.php",
         21 => "./pages/login/conteudo_login.php",
-        22 => "./pages/login/vereficar_code.php",
-        23 => "./pages/login/processar_registro.php",
+        22 => "./pages/cliente/vereficar_code.php",
     ];
     if (isset($pages[$op])) {
         require($pages[$op]);

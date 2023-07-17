@@ -143,24 +143,43 @@ $result = $conn->query($sql);
     </div> <!-- End Offcanvas Header -->
     <!-- Start Offcanvas Mobile Menu Wrapper -->
     <!-- Start Mobile contact Info -->
+    <?php
+$sqlEmpresa = "SELECT * FROM empresa";
+$resultEmpresa = $conn->query($sqlEmpresa);
+
+if ($resultEmpresa->num_rows > 0) {
+    $rowEmpresa = $resultEmpresa->fetch_assoc();
+    $logo = $rowEmpresa["logo"];
+    $endereco = $rowEmpresa["endereco"];
+    $telefone = $rowEmpresa["telefone"];
+    $email = $rowEmpresa["email"];
+    $facebook = $rowEmpresa["facebook"];
+    $instagram = $rowEmpresa["instagram"];
+    $twitter = $rowEmpresa["twitter"];
+
+    echo '
     <div class="mobile-contact-info">
         <div class="logo">
-            <a href="index.html"><img src="assets/images/logo/logo_white.png" alt=""></a>
+            <a href="./"><img src="' . $rowEmpresa["logo"] . '" alt=""></a>
         </div>
 
         <address class="address">
-            <span>Address: R. de Soares dos Reis 191, 4430-315 Vila Nova de Gaia</span>
-            <span>Call Us: 918 306 594</span>
-            <span>Email: danielsilvareis87@hotmail.com</span>
+            <span>Endereço: ' . $endereco . '</span>
+            <span>Call Us: ' . $telefone . '</span>
+            <span>Email: ' . $email . '</span>
         </address>
 
         <ul class="social-link">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="' . $facebook . '"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="' . $twitter . '"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="' . $instagram . '"><i class="fa fa-instagram"></i></a></li>
         </ul>
-    </div>
+    </div>';
+} else {
+    echo "Nenhum dado encontrado.";
+}
+?>
+
     <!-- End Mobile contact Info -->
 </div> <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
 
@@ -220,23 +239,42 @@ $result = $conn->query($sql);
         </div> <!-- End Mobile Menu -->
 
         <!-- Start Mobile contact Info -->
-        <div class="mobile-contact-info">
-            <div class="logo">
-                <a href="./"><img src="assets/images/logo/logo_white.png" alt=""></a>
-            </div>
+        <?php
+$sqlEmpresa = "SELECT * FROM empresa";
+$resultEmpresa = $conn->query($sqlEmpresa);
 
-            <address class="address">
-                <span>Address: R. de Soares dos Reis 191, 4430-315 Vila Nova de Gaia</span>
-                <span>Call Us: 918 306 594</span>
-                <span>Email: danielsilvareis87@hotmail.com</span>
-            </address>
+if ($resultEmpresa->num_rows > 0) {
+    $rowEmpresa = $resultEmpresa->fetch_assoc();
+    $logo = $rowEmpresa["logo"];
+    $endereco = $rowEmpresa["endereco"];
+    $telefone = $rowEmpresa["telefone"];
+    $email = $rowEmpresa["email"];
+    $facebook = $rowEmpresa["facebook"];
+    $instagram = $rowEmpresa["instagram"];
+    $twitter = $rowEmpresa["twitter"];
 
-            <ul class="social-link">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            </ul>
+    echo '
+    <div class="mobile-contact-info">
+        <div class="logo">
+            <a href="./"><img src="' . $rowEmpresa["logo"] . '" alt=""></a>
         </div>
+
+        <address class="address">
+            <span>Endereço: ' . $endereco . '</span>
+            <span>Call Us: ' . $telefone . '</span>
+            <span>Email: ' . $email . '</span>
+        </address>
+
+        <ul class="social-link">
+            <li><a href="' . $facebook . '"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="' . $twitter . '"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="' . $instagram . '"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+    </div>';
+} else {
+    echo "Nenhum dado encontrado.";
+}
+?>
 
         <!-- End Mobile contact Info -->
 

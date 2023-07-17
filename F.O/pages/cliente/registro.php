@@ -3,7 +3,7 @@
         <div class="account_form register" data-aos="fade-up" data-aos-delay="200">
             <br>
             <h3>Register</h3>
-            <form id="cad-usuario-form" action="./pages/login/processar_registro.php" method="POST">
+            <form id="cad-cliente" action="./pages/processos/processar_registro.php" method="POST">
                 <span id="msgAlertErroCad"></span>
                 <div class="input-radio">
                     <span class="custom-radio"><input type="radio" value="1" name="genero"> Masculino.</span>
@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <div class="default-form-box">
                         <label>Nome de Utilizador<span>*</span></label>
-                        <input type="text" name="username" required>
+                       <input type="text" name="username" required>
                     </div>
                     <div class="default-form-box">
                         <label>Data de Nascimento<span>*</span></label>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="login_submit">
-                    <button class="btn btn-md btn-black-default-hover" type="submit" id="cad-usuario-btn" name="entrar">Register</button>
+                    <button class="btn btn-md btn-black-default-hover" type="submit" id="cad-cliente-btn" name="entrar">Register</button>
                 </div>
             </form>
         </div>

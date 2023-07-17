@@ -1,5 +1,5 @@
 <h2>Digite o código enviado no e-mail cadastrado</h2>
-
+" . $dados['pri_nome'] . ' ' . $dados['ult_nome'] . ",
 <?php
 // Receber os dados do formulário
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);

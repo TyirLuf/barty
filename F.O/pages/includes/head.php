@@ -4,12 +4,9 @@ $op = 0;
 if (isset($_GET['p']))
     $op = $_GET['p'];
 require("./php/connect.php");
-include "./php/cliente.php";
-include "./php/controllerUserData.php";
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
-include_once './pages/login/message.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
@@ -33,11 +30,12 @@ include_once './pages/login/message.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="sweetalert2.min.css">
-   
-    <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
+    <link href="assets/css/datetimepicker.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/datetimepicker.js"></script>
 
     <!-- Vendor CSS -->
     
