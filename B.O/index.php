@@ -20,6 +20,8 @@ include './pages/includes/sidebar.php';
         12 => "./pages/clientes/editar_cli.php",
         13 => "./pages/clientes/eliminar_cli.php",
         14 => "./pages/clientes/add_cli.php",
+        20 => "./pages/agendamento/todos_agendamento.php",
+
     ];
     if (isset($pages[$op])) {
         require($pages[$op]);

@@ -15,6 +15,21 @@
                 </div>
             </div>
         </div>
+        <?php
+        if (isset($_SESSION['status'])) {
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <br>
+        <?php
+
+            unset($_SESSION['status']);
+        }
+        ?>
         <div class="row">
             <div class="col-sm-4 col-12">
             </div>
@@ -69,7 +84,7 @@
 
                     $primeiro_nome = $row["primeiro_nome"];
                     $ultimo_nome = $row["ultimo_nome"];
-                  
+
             ?>
                     <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
                         <div class="profile-widget">
